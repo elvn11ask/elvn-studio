@@ -29,7 +29,7 @@ SMTP, Microsoft 365, and Gmail/Google Workspace require tenant and delivery disc
 
 ## Analytics
 
-Google Analytics, Yandex Metrika, Microsoft Clarity, Search Console, Yandex Webmaster, Bing Webmaster, Power BI, Looker Studio, Tableau, custom BI, and data warehouses operate within their consent, API, retention, and aggregation limits. Browser analytics is supporting evidence; commercial events and paid outcomes remain server-side records.
+Google Analytics, Microsoft Clarity, Search Console, Bing Webmaster, Power BI, Looker Studio, Tableau, custom BI, and data warehouses operate within their consent, API, retention, and aggregation limits. Browser analytics is supporting evidence; commercial events and paid outcomes remain server-side records.
 
 ## Acceptance gates
 
