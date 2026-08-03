@@ -1,0 +1,61 @@
+name: Production
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+concurrency:
+  group: elvn-studio-production
+  cancel-in-progress: false
+jobs:
+  release:
+    environment: production
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10.15.0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm check
+      - name: Build immutable image
+        run: docker build --tag "elvn-studio:${GITHUB_SHA}" .
+      - name: Export release
+        run: |
+          docker save "elvn-studio:${GITHUB_SHA}" | gzip -9 > elvn-studio-image.tar.gz
+          tar -czf elvn-studio-release.tar.gz elvn-studio-image.tar.gz compose.production.yml deploy/nginx/studio.elvn.monster.conf
+      - name: Configure SSH
+        env:
+          VPS_KNOWN_HOSTS: ${{ secrets.VPS_KNOWN_HOSTS }}
+          VPS_SSH_KEY: ${{ secrets.VPS_SSH_KEY }}
+        run: |
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$VPS_KNOWN_HOSTS" > ~/.ssh/known_hosts
+          printf '%s\n' "$VPS_SSH_KEY" > ~/.ssh/studio_deploy
+          chmod 600 ~/.ssh/known_hosts ~/.ssh/studio_deploy
+      - name: Upload candidate
+        env:
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+          VPS_PORT: ${{ secrets.VPS_PORT }}
+          VPS_USER: ${{ secrets.VPS_USER }}
+        run: scp -P "$VPS_PORT" -i ~/.ssh/studio_deploy elvn-studio-release.tar.gz "$VPS_USER@$VPS_HOST:/tmp/elvn-studio-release.tar.gz"
+      - name: Deploy, verify, and retain rollback
+        env:
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+          VPS_PORT: ${{ secrets.VPS_PORT }}
+          VPS_USER: ${{ secrets.VPS_USER }}
+        run: ssh -p "$VPS_PORT" -i ~/.ssh/studio_deploy "$VPS_USER@$VPS_HOST" "sudo /usr/local/sbin/elvn-studio-deploy /tmp/elvn-studio-release.tar.gz '${GITHUB_SHA}'"
+      - name: Public smoke test
+        run: |
+          curl --fail --silent --show-error --retry 5 --retry-delay 5 https://studio.elvn.monster/api/health
+          for route in / /work /services /contact /sitemap.xml /robots.txt; do
+            curl --fail --silent --show-error --retry 3 "https://studio.elvn.monster${route}" > /dev/null
+          done
