@@ -1,0 +1,26 @@
+slug: elvn
+title: ELVN
+eyebrow: Public product-building platform
+summary: A transparent public home for product work, release notes, research, and an evolving independent technology brand.
+problem: Build-in-public work loses credibility when updates, product artifacts, and operating principles are scattered across social channels.
+solution: A semantic Next.js site brings the journal, news, archive, RSS, privacy controls, and production operations into one owned platform.
+outcome: A secure, crawlable public record with isolated deployment, health checks, and a documented rollback path.
+role: Founder and product engineer
+industry: Independent technology
+platform: Publishing and product website
+liveUrl: https://elvn.monster
+featured: false
+published: true
+order: 5
+skills: [Product strategy, Next.js engineering, Privacy architecture, Deployment]
+technologies: [Next.js, TypeScript, Docker, Nginx]
+evidence:
+  - label: Owned publishing
+    detail: Journal, news, RSS, sitemap, and brand archive live in a semantic public architecture.
+    note: Verified from the production site and repository.
+  - label: Release safety
+    detail: Container isolation, health checks, and rollback are documented parts of the production system.
+    note: Verified from deployment documentation.
+cover: /projects/elvn/cover.png
+coverAlt: ELVN public build journal shown on a desktop browser
+theme: mono

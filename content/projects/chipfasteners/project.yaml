@@ -1,0 +1,29 @@
+slug: chipfasteners
+title: ChipFasteners
+eyebrow: B2B procurement platform
+summary: A high-performance electronic components catalog built around technical discovery, BOM workflows, and RFQ conversion.
+problem: Buyers need to move from complex part discovery to a qualified request without fighting a slow, consumer-style storefront.
+solution: The product combines a canonical catalog, manufacturer and family navigation, quote basket, BOM intake, and secure inquiry paths.
+outcome: A production procurement experience that keeps technical search, crawlability, and commercial conversion in the same system.
+role: Product engineer and full-stack developer
+industry: Electronic components
+platform: B2B web platform
+liveUrl: https://chipfasteners.com
+featured: true
+published: true
+order: 1
+skills: [Product engineering, B2B architecture, Technical SEO, Performance engineering]
+technologies: [Next.js, TypeScript, PostgreSQL, Nginx]
+evidence:
+  - label: RFQ-first workflow
+    detail: Product discovery leads into quote and BOM inquiry paths instead of a generic retail checkout.
+    note: Verified against the public production journey.
+  - label: Search architecture
+    detail: Canonical product, manufacturer, and family routes support technical discovery and indexable navigation.
+    note: Verified from publicly accessible catalog routes.
+  - label: Production controls
+    detail: Public forms use validation and abuse-resistant handling suitable for a commercial inquiry flow.
+    note: Described without disclosing private operational details.
+cover: /projects/chipfasteners/cover.jpg
+coverAlt: ChipFasteners electronic components catalog shown on a desktop browser
+theme: lime

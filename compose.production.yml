@@ -1,0 +1,25 @@
+version: "3.8"
+
+services:
+  studio:
+    image: elvn-studio:${RELEASE_TAG:?RELEASE_TAG is required}
+    container_name: elvn-studio
+    restart: unless-stopped
+    env_file: /srv/elvn-studio/shared/studio.env
+    ports:
+      - "127.0.0.1:${STUDIO_PORT:?STUDIO_PORT is required}:3000"
+    read_only: true
+    tmpfs:
+      - /tmp:size=32m,noexec,nosuid,nodev
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    pids_limit: 128
+    mem_limit: 384m
+    cpus: 1.0
+    networks:
+      - studio-internal
+networks:
+  studio-internal:
+    name: elvn-studio-internal

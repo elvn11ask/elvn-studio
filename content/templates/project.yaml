@@ -1,0 +1,23 @@
+slug: project-slug
+title: Project name
+eyebrow: Business category
+summary: A concise description of the product and the business problem it addresses.
+problem: The verified problem in plain language.
+solution: The implemented solution in plain language.
+outcome: The supported current outcome without invented commercial claims.
+role: Your exact role
+industry: Industry
+platform: Product type
+liveUrl: https://example.com
+featured: false
+published: false
+order: 99
+skills: [Product engineering, Technical SEO]
+technologies: [Technology, Technology]
+evidence:
+  - label: Evidence label
+    detail: What was implemented or measured.
+    note: Where and how it was verified.
+cover: /projects/project-slug/cover.png
+coverAlt: Accurate description of the production screenshot
+theme: mono

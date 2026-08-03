@@ -1,0 +1,26 @@
+slug: peterhofapart
+title: PeterhofApart
+eyebrow: Hospitality and direct booking
+summary: A hospitality website that makes accommodation, location, and the direct booking path easy to understand on any device.
+problem: Guests need confidence in the property and a clear path to availability without getting lost between visual content and third-party tools.
+solution: The site combines room storytelling, practical details, maps, communication links, and a responsive handoff to booking.
+outcome: A credible direct channel with a focused mobile journey and production-ready SEO, HTTPS, and performance foundations.
+role: Web product designer and developer
+industry: Hospitality
+platform: Business website
+liveUrl: https://peterhofapart.ru
+featured: true
+published: true
+order: 3
+skills: [UX design, Responsive development, Technical SEO, Production deployment]
+technologies: [Web platform, Responsive images, Maps, Booking integration]
+evidence:
+  - label: Direct journey
+    detail: Accommodation details, location context, and booking action are connected in one clear visitor flow.
+    note: Verified against the public website.
+  - label: Mobile clarity
+    detail: Essential room and contact information remains readable and actionable on small screens.
+    note: Verified through responsive review.
+cover: /projects/peterhofapart/cover.jpg
+coverAlt: PeterhofApart accommodation website shown on a desktop browser
+theme: rose
