@@ -56,6 +56,8 @@ jobs:
       - name: Public smoke test
         run: |
           curl --fail --silent --show-error --retry 5 --retry-delay 5 https://studio.elvn.monster/api/health
-          for route in / /work /services /contact /sitemap.xml /robots.txt; do
+          for route in / /work /services /contact /sitemap.xml /robots.txt /c8363361518e464ca28c62dd7a5e9d9d.txt; do
             curl --fail --silent --show-error --retry 3 "https://studio.elvn.monster${route}" > /dev/null
           done
+      - name: Notify IndexNow
+        run: pnpm indexnow:submit
