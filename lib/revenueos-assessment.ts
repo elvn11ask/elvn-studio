@@ -4,7 +4,7 @@ export const teamSizes = ["1–5", "6–20", "21–50", "51–200", "201–1,000
 export const rfqVolumes = ["Under 50/month", "50–250/month", "251–1,000/month", "1,001–5,000/month", "5,000+/month", "Not measured"] as const;
 export const deploymentPreferences = ["Managed private cloud", "Customer private cloud", "Self-hosted", "Need guidance"] as const;
 export const aiPreferences = ["No AI", "Bring our own provider", "Private/local models", "Managed AI assessment", "Undecided"] as const;
-export const assessmentBudgets = ["$2,500–$7,500 audit", "$10,000–$25,000 pilot", "$25,000–$60,000 professional", "$60,000–$150,000 business", "$150,000+ enterprise", "Need discovery"] as const;
+export const assessmentBudgets = ["$2,500–$7,500 one-time audit", "$10,000–$25,000 one-time pilot", "$25,000–$60,000 one-time implementation", "$60,000–$150,000 one-time implementation", "$150,000+ one-time enterprise implementation", "Need discovery"] as const;
 
 export const revenueAssessmentSchema = z.object({
   name: z.string().trim().min(2).max(80),

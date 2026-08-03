@@ -4,7 +4,7 @@ import { ProductSchema } from "@/components/revenueos/product-shell";
 import robots from "@/app/robots";
 import { issueContactToken } from "@/lib/contact";
 import { assessmentTimingValid, buildRevenueAssessmentBrief, revenueAssessmentSchema } from "@/lib/revenueos-assessment";
-import { faqs, modules, revenueOSRoutes } from "@/lib/revenueos";
+import { faqs, integrations, modules, pricing, revenueOSRoutes } from "@/lib/revenueos";
 
 const validAssessment = {
   name: "Operations owner",
@@ -22,7 +22,7 @@ const validAssessment = {
   deployment: "Customer private cloud",
   aiPreference: "Bring our own provider",
   timeline: "Pilot this quarter",
-  budget: "$25,000–$60,000 professional",
+  budget: "$25,000–$60,000 one-time implementation",
   message: "Start with one catalog and one commercial team.",
   consent: true,
   website: "",
@@ -34,6 +34,16 @@ describe("Revenue Operations product area", () => {
   it("publishes the complete route and module architecture", () => {
     expect(revenueOSRoutes).toHaveLength(11);
     expect(modules).toHaveLength(20);
+  });
+
+  it("publishes only the approved analytics services and states every price basis", () => {
+    expect(integrations.filter((item) => item.group === "Analytics").map((item) => item.name)).toEqual([
+      "Google Analytics", "Microsoft Clarity", "Search Console", "Bing Webmaster",
+      "Power BI", "Looker Studio", "Tableau", "Customer BI", "Custom warehouse",
+    ]);
+    expect(pricing.every((item) => item.basis && item.recurring)).toBe(true);
+    expect(pricing[2].basis).toBe("One-time implementation");
+    expect(pricing[2].recurring).toContain("per month");
   });
 
   it("validates a qualified assessment and rejects bots and rushed submissions", () => {

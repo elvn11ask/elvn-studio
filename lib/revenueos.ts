@@ -69,7 +69,7 @@ export const integrations: ReadonlyArray<{ group: string; name: string; classifi
   { group: "ERP and operations", name: "Email-driven legacy workflows", classification: "Custom adapter", note: "Mailbox and message mapping designed around the customer's existing workflow." },
   ...["SMTP", "Microsoft 365", "Gmail / Google Workspace"].map((name) => ({ group: "Communication", name, classification: "Standard API" as const, note: "Delivery and mailbox evidence depend on tenant permissions and provider capabilities." })),
   ...["Telegram", "Slack", "Microsoft Teams", "SMS providers"].map((name) => ({ group: "Communication", name, classification: "Webhook" as const, note: "Notification adapter; not a system of record." })),
-  ...["Google Analytics", "Yandex Metrika", "Microsoft Clarity", "Search Console", "Yandex Webmaster", "Bing Webmaster"].map((name) => ({ group: "Analytics", name, classification: "Standard API" as const, note: "Consent, API availability, and attribution limits are documented during implementation." })),
+  ...["Google Analytics", "Microsoft Clarity", "Search Console", "Bing Webmaster"].map((name) => ({ group: "Analytics", name, classification: "Standard API" as const, note: "Consent, API availability, and attribution limits are documented during implementation." })),
   ...["Power BI", "Looker Studio", "Tableau", "Customer BI", "Custom warehouse"].map((name) => ({ group: "Analytics", name, classification: "Discovery required" as const, note: "Read model or controlled export defined against the customer's reporting boundary." })),
 ];
 
@@ -77,12 +77,12 @@ export const aiProviders = ["OpenAI", "Anthropic", "Google Gemini", "Azure OpenA
 export const aiCapabilities = ["RFQ summarization", "lead classification", "urgency detection", "duplicate suggestions", "product and MPN extraction", "supplier suggestions", "missing-data detection", "quote drafting", "customer-response drafting", "next-action suggestions", "follow-up reminders", "risk and margin warnings", "lost-reason classification", "pipeline summaries", "multilingual correspondence", "management briefings"] as const;
 
 export const pricing = [
-  { name: "Revenue Operations Audit", range: "$2,500–$7,500", fee: "Fixed-scope discovery", summary: "Workflow audit, RFQ loss analysis, integration inventory, tracking gaps, target architecture, and implementation roadmap." },
-  { name: "RevenueOS Pilot", range: "$10,000–$25,000", fee: "Implementation", summary: "One site and RFQ source, lead identity, delivery assurance, assignment, basic SLA, pipeline, dashboard, and one integration." },
-  { name: "Professional", range: "$25,000–$60,000", fee: "$750–$1,500/month platform and support", summary: "Multiple RFQ paths, supplier and quote workflow, attribution, API, dashboards, several integrations, and optional BYO AI." },
-  { name: "Business", range: "$60,000–$150,000", fee: "$2,000–$5,000/month platform and support", summary: "Multi-team operations, CRM/ERP integration, sourcing, quote lifecycle, escalation, roles, and private-cloud option." },
-  { name: "Enterprise", range: "$150,000–$500,000+", fee: "Custom annual platform and support", summary: "Multi-company or regional deployment, SSO, advanced audit, complex ERP, warehouse, migration, SLA, and dedicated support." },
-  { name: "Self-hosted first year", range: "$40,000–$250,000+", fee: "Implementation plus annual license and mandatory support", summary: "Customer-controlled deployment. Maintenance and security support remain tied to an active annual agreement." },
+  { name: "Revenue Operations Audit", range: "$2,500–$7,500", basis: "One-time fixed fee", recurring: "No recurring platform fee", summary: "Workflow audit, RFQ loss analysis, integration inventory, tracking gaps, target architecture, and implementation roadmap." },
+  { name: "RevenueOS Pilot", range: "$10,000–$25,000", basis: "One-time implementation", recurring: "Ongoing service is scoped after the pilot", summary: "One site and RFQ source, lead identity, delivery assurance, assignment, basic SLA, pipeline, dashboard, and one integration." },
+  { name: "Professional", range: "$25,000–$60,000", basis: "One-time implementation", recurring: "$750–$1,500 per month platform and support", summary: "Multiple RFQ paths, supplier and quote workflow, attribution, API, dashboards, several integrations, and optional BYO AI." },
+  { name: "Business", range: "$60,000–$150,000", basis: "One-time implementation", recurring: "$2,000–$5,000 per month platform and support", summary: "Multi-team operations, CRM/ERP integration, sourcing, quote lifecycle, escalation, roles, and private-cloud option." },
+  { name: "Enterprise", range: "$150,000–$500,000+", basis: "One-time implementation", recurring: "Custom annual platform and support agreement", summary: "Multi-company or regional deployment, SSO, advanced audit, complex ERP, warehouse, migration, SLA, and dedicated support." },
+  { name: "Self-hosted first year", range: "$40,000–$250,000+", basis: "First-year total", recurring: "Annual license and support renew after year one", summary: "Includes implementation, the first annual license, and mandatory first-year support for a customer-controlled deployment." },
 ] as const;
 
 export const implementationSteps = [
