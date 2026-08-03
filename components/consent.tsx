@@ -39,6 +39,20 @@ export function ConsentControls() {
   );
 }
 
+export function GoogleAnalyticsTag() {
+  return (
+    <>
+      <Script
+        src={`https://www.googletagmanager.com/gtag/js?id=${googleAnalyticsId}`}
+        strategy="afterInteractive"
+      />
+      <Script id="elvn-studio-google-analytics-bootstrap" strategy="afterInteractive">
+        {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('consent','default',{analytics_storage:'denied',ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',wait_for_update:500});gtag('js',new Date());gtag('config','${googleAnalyticsId}',{anonymize_ip:true,send_page_view:false});`}
+      </Script>
+    </>
+  );
+}
+
 export function AnalyticsMeasurement() {
   const choice = useAnalyticsConsent();
 
@@ -46,12 +60,8 @@ export function AnalyticsMeasurement() {
 
   return (
     <>
-      <Script
-        src={`https://www.googletagmanager.com/gtag/js?id=${googleAnalyticsId}`}
-        strategy="afterInteractive"
-      />
-      <Script id="elvn-studio-google-analytics" strategy="afterInteractive">
-        {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','${googleAnalyticsId}',{anonymize_ip:true});`}
+      <Script id="elvn-studio-google-analytics-consent" strategy="afterInteractive">
+        {`gtag('consent','update',{analytics_storage:'granted'});gtag('config','${googleAnalyticsId}',{anonymize_ip:true,send_page_view:true});`}
       </Script>
       <Script id="elvn-studio-clarity" strategy="afterInteractive">
         {`(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src='https://www.clarity.ms/tag/'+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,'clarity','script','${clarityId}');`}
