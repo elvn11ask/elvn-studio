@@ -1,5 +1,3 @@
-version: "3.8"
-
 services:
   studio:
     image: elvn-studio:${RELEASE_TAG:?RELEASE_TAG is required}
@@ -19,7 +17,7 @@ services:
     mem_limit: 384m
     cpus: 1.0
     networks:
-      - studio-internal
+      - elvn-studio-internal
 networks:
-  studio-internal:
+  elvn-studio-internal:
     name: elvn-studio-internal
