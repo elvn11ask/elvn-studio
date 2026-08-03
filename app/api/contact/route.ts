@@ -108,7 +108,7 @@ export async function POST(request: Request) {
 
     return NextResponse.json({
       ok: true,
-      message: "Thanks — your project brief was sent. Expect a practical next step by email.",
+      message: "Thanks — your project brief was sent. Expect a practical next step shortly.",
       requestId,
     });
   } catch {
