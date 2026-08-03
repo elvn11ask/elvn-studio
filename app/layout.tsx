@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
-import { ConsentControls } from "@/components/consent";
+import { AnalyticsMeasurement, ConsentControls } from "@/components/consent";
 import { site } from "@/lib/site";
 import "./globals.css";
 
@@ -37,6 +37,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <main id="main">{children}</main>
         <Footer />
         <ConsentControls />
+        <AnalyticsMeasurement />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, "\\u003c") }} />
       </body>
     </html>
