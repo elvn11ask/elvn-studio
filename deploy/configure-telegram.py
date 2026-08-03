@@ -11,6 +11,9 @@ import urllib.request
 from pathlib import Path
 
 ENV_FILE = Path("/srv/elvn-studio/shared/studio.env")
+RUNTIME_ENV_FILE = Path("/srv/elvn-studio/shared/runtime.env")
+CURRENT_RELEASE = Path("/srv/elvn-studio/current")
+DEPLOYED_COMMIT_FILE = Path("/srv/elvn-studio/DEPLOYED_COMMIT")
 HEALTH_URL = "http://127.0.0.1:3021/api/health"
 
 
@@ -73,15 +76,51 @@ def update_environment(token: str, chat_id: str) -> None:
             os.unlink(temporary_name)
 
 
+def read_environment(path: Path) -> dict[str, str]:
+    values = {}
+    for line in path.read_text().splitlines():
+        if line and not line.startswith("#") and "=" in line:
+            key, value = line.split("=", 1)
+            values[key] = value
+    return values
+
+
+def recreate_container() -> None:
+    compose_file = CURRENT_RELEASE / "compose.production.yml"
+    if not compose_file.is_file() or not RUNTIME_ENV_FILE.is_file() or not DEPLOYED_COMMIT_FILE.is_file():
+        raise RuntimeError("Production release metadata is incomplete")
+
+    environment = os.environ.copy()
+    environment.update(read_environment(RUNTIME_ENV_FILE))
+    environment["RELEASE_TAG"] = DEPLOYED_COMMIT_FILE.read_text().strip()
+    subprocess.run(
+        [
+            "docker",
+            "compose",
+            "--project-name",
+            "elvn-studio",
+            "--file",
+            str(compose_file),
+            "up",
+            "--detach",
+            "--force-recreate",
+            "--no-build",
+        ],
+        check=True,
+        env=environment,
+        stdout=subprocess.DEVNULL,
+    )
+
+
 def wait_for_health() -> None:
     for _ in range(12):
         try:
             with urllib.request.urlopen(HEALTH_URL, timeout=3) as response:
                 if response.status == 200:
                     return
-        except urllib.error.URLError:
+        except (urllib.error.URLError, OSError):
             time.sleep(2)
-    raise RuntimeError("The site did not become healthy after restart")
+    raise RuntimeError("The site did not become healthy after recreation")
 
 
 def main() -> int:
@@ -104,7 +143,7 @@ def main() -> int:
         return 1
 
     update_environment(token, chat_id)
-    subprocess.run(["docker", "restart", "elvn-studio"], check=True, stdout=subprocess.DEVNULL)
+    recreate_container()
     wait_for_health()
     telegram_call(
         token,
