@@ -1,0 +1,2 @@
+import Link from "next/link";
+export default function NotFound(){return <section className="not-found shell"><p className="eyebrow">404 · Route not found</p><h1>This page is outside the current build.</h1><p>The project may have moved, or the address may be incomplete.</p><div className="button-row"><Link className="button" href="/work">View selected work</Link><Link className="button-quiet" href="/">Return home</Link></div></section>}

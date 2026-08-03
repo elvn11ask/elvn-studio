@@ -1,0 +1,6 @@
+import type { Metadata } from "next";
+import { ContactForm } from "@/components/contact-form";
+import { PageIntro } from "@/components/page-intro";
+import { site } from "@/lib/site";
+export const metadata:Metadata={title:"Contact",description:"Describe your product, platform, website, performance, or production challenge to ELVN Studio.",alternates:{canonical:"/contact"}};
+export default function ContactPage(){return <><PageIntro eyebrow="Discuss a project" title="Tell me what is blocked, fragile, slow, or ready to launch."><p>A useful first message includes the current state, the most important constraint, and what a successful next stage looks like.</p></PageIntro><section className="section shell contact-layout"><aside><p className="eyebrow">Direct contact</p><a className="contact-link" href={`mailto:${site.email}`}><span>Email</span><strong>{site.email}</strong></a><a className="contact-link" href={site.social.telegram} target="_blank" rel="noreferrer"><span>Telegram</span><strong>@elvnask</strong></a><a className="contact-link" href={site.social.x} target="_blank" rel="noreferrer"><span>X</span><strong>@elvn11ask</strong></a><p className="contact-note">The form validates in safe test mode until private delivery credentials are configured. QA never sends messages to the real mailbox or Telegram account.</p></aside><ContactForm/></section></>}

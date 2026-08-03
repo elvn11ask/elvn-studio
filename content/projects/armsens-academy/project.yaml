@@ -1,0 +1,26 @@
+slug: armsens-academy
+title: ARMSENS Academy
+eyebrow: Interactive learning product
+summary: A multilingual electronics learning experience that turns technical material into structured, responsive missions.
+problem: Dense electronics topics are difficult to teach through static pages, especially across languages, devices, and different interaction needs.
+solution: Lessons are organized as focused missions with responsive controls, clear progress, deterministic previews, and accessible interaction states.
+outcome: A coherent learning product that works across screen sizes without pretending an unverified prototype is a live AI tutor.
+role: Product engineer and interface developer
+industry: Education technology
+platform: Interactive web application
+liveUrl: https://academy.armsens.com
+featured: true
+published: true
+order: 2
+skills: [Product design, Responsive engineering, Accessibility, Test automation]
+technologies: [React, TypeScript, Internationalization, Automated testing]
+evidence:
+  - label: Multilingual product
+    detail: Navigation and learning content are designed to remain coherent across supported locales.
+    note: Verified from the public locale experience.
+  - label: Inclusive controls
+    detail: Visible focus, reduced-motion behavior, and responsive lesson controls are treated as product requirements.
+    note: Verified against implemented interaction states.
+cover: /projects/armsens-academy/cover.jpg
+coverAlt: ARMSENS Academy interactive electronics lesson on a desktop browser
+theme: amber

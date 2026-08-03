@@ -1,0 +1,3 @@
+import { describe,expect,it } from "vitest";
+import { contactSchema,issueContactToken,verifyContactToken } from "@/lib/contact";
+describe("contact protection",()=>{it("signs and verifies short-lived tokens",()=>{expect(verifyContactToken(issueContactToken())).toBe(true);expect(verifyContactToken("invalid.token.value")).toBe(false)});it("rejects short project descriptions",()=>{expect(contactSchema.safeParse({name:"Project owner",email:"owner@example.com",projectType:"Other",budget:"Not sure yet",description:"Too short",consent:true,website:"",token:issueContactToken()}).success).toBe(false)})});

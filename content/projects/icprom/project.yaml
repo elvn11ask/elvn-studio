@@ -1,0 +1,26 @@
+slug: icprom
+title: ICPROM
+eyebrow: Industrial catalog runtime
+summary: An industrial components catalog focused on durable technical navigation, scalable page generation, and fast server response.
+problem: A broad component taxonomy creates expensive runtime work and fragile crawl behavior when every request recomputes the same structures.
+solution: Immutable generated artifacts move stable navigation, summaries, facets, and page slices out of the critical request path.
+outcome: A leaner production runtime with preserved URLs, clearer crawl paths, and a more predictable browsing experience.
+role: Performance and platform engineer
+industry: Industrial components
+platform: Catalog website
+liveUrl: https://icprom.ru
+featured: true
+published: true
+order: 4
+skills: [Performance engineering, Catalog architecture, Technical SEO, Production validation]
+technologies: [PHP, MySQL, Nginx, Generated artifacts]
+evidence:
+  - label: Precomputed runtime
+    detail: Stable catalog structures are generated ahead of requests to reduce repeated server work.
+    note: Verified from the implemented production architecture.
+  - label: SEO continuity
+    detail: Optimization preserves canonical routes, hierarchy, and crawlable internal links.
+    note: Verified through route and crawl validation.
+cover: /projects/icprom/cover.png
+coverAlt: ICPROM industrial product catalog shown on a desktop browser
+theme: blue
