@@ -17,6 +17,15 @@ test -f "$app_root/shared/studio.env"
 test -f "$app_root/shared/runtime.env"
 test ! -e "$release_dir"
 
+if docker compose version >/dev/null 2>&1; then
+  compose() { docker compose "$@"; }
+elif command -v docker-compose >/dev/null 2>&1; then
+  compose() { docker-compose "$@"; }
+else
+  echo "Docker Compose is not installed" >&2
+  exit 1
+fi
+
 mkdir -p "$release_dir"
 tar -xzf "$archive" -C "$release_dir"
 gzip -dc "$release_dir/elvn-studio-image.tar.gz" | docker load
@@ -25,7 +34,7 @@ set -a
 . "$app_root/shared/runtime.env"
 set +a
 export RELEASE_TAG="$release_tag"
-docker compose -p elvn-studio -f "$release_dir/compose.production.yml" up -d --no-build
+compose -p elvn-studio -f "$release_dir/compose.production.yml" up -d --no-build
 
 attempt=0
 until curl -fsS "http://127.0.0.1:${STUDIO_PORT:?}/api/health" >/dev/null; do
@@ -36,7 +45,7 @@ until curl -fsS "http://127.0.0.1:${STUDIO_PORT:?}/api/health" >/dev/null; do
       old_release=$(readlink -f "$current")
       old_tag=$(basename "$old_release")
       export RELEASE_TAG="$old_tag"
-      docker compose -p elvn-studio -f "$old_release/compose.production.yml" up -d --no-build
+      compose -p elvn-studio -f "$old_release/compose.production.yml" up -d --no-build
     fi
     exit 1
   fi
