@@ -55,6 +55,9 @@ async function submit() {
   throw new Error(`IndexNow rejected the submission with HTTP ${lastStatus}`);
 }
 
-await submit();
+submit().catch((error: unknown) => {
+  console.error(error instanceof Error ? error.message : "IndexNow submission failed");
+  process.exitCode = 1;
+});
 
 export {};

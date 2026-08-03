@@ -20,7 +20,7 @@ export function Footer() {
         </div>
         <div>
           <strong>Explore</strong>
-          <Link href="/work">Work</Link><Link href="/services">Services</Link><Link href="/process">Process</Link><Link href="/resume">Resume</Link>
+          <Link href="/revenueos">Revenue Operations</Link><Link href="/work">Work</Link><Link href="/services">Services</Link><Link href="/process">Process</Link>
         </div>
         <div>
           <strong>Connect</strong>
