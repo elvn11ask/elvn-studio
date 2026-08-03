@@ -1,0 +1,49 @@
+#!/bin/sh
+set -eu
+
+archive=${1:?release archive is required}
+release_tag=${2:?release tag is required}
+app_root=/srv/elvn-studio
+releases="$app_root/releases"
+release_dir="$releases/$release_tag"
+current="$app_root/current"
+previous="$app_root/previous"
+
+case "$archive" in /tmp/elvn-studio-release.tar.gz) ;; *) echo "Unexpected archive path" >&2; exit 2;; esac
+case "$release_tag" in *[!0-9a-f]*) echo "Unexpected release tag" >&2; exit 2;; esac
+test -f "$archive"
+test -d "$app_root"
+test -f "$app_root/shared/studio.env"
+test -f "$app_root/shared/runtime.env"
+test ! -e "$release_dir"
+
+mkdir -p "$release_dir"
+tar -xzf "$archive" -C "$release_dir"
+gzip -dc "$release_dir/elvn-studio-image.tar.gz" | docker load
+
+set -a
+. "$app_root/shared/runtime.env"
+set +a
+export RELEASE_TAG="$release_tag"
+docker compose -p elvn-studio -f "$release_dir/compose.production.yml" up -d --no-build
+
+attempt=0
+until curl -fsS "http://127.0.0.1:${STUDIO_PORT:?}/api/health" >/dev/null; do
+  attempt=$((attempt + 1))
+  if [ "$attempt" -ge 12 ]; then
+    echo "Candidate health check failed" >&2
+    if [ -L "$current" ]; then
+      old_release=$(readlink -f "$current")
+      old_tag=$(basename "$old_release")
+      export RELEASE_TAG="$old_tag"
+      docker compose -p elvn-studio -f "$old_release/compose.production.yml" up -d --no-build
+    fi
+    exit 1
+  fi
+  sleep 2
+done
+
+if [ -L "$current" ]; then ln -sfn "$(readlink -f "$current")" "$previous"; fi
+ln -sfn "$release_dir" "$current"
+printf '%s\n' "$release_tag" > "$app_root/DEPLOYED_COMMIT"
+rm -f "$archive"
