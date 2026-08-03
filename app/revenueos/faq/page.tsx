@@ -1,0 +1,5 @@
+import type { Metadata } from "next";
+import { ProductCTA, ProductHero, ProductSchema } from "@/components/revenueos/product-shell";
+import { faqs } from "@/lib/revenueos";
+export const metadata:Metadata={title:"RevenueOS FAQ",description:"Answers about product maturity, CRM and ERP integration, optional AI, self-hosting, implementation time, and commercial scope.",alternates:{canonical:"/revenueos/faq"}};
+export default function FAQPage(){return <><ProductHero eyebrow="Frequently asked questions" title="Scope, maturity, integration, AI, and deployment—without ambiguity." lede="RevenueOS is offered as a private implementation program. The answers below distinguish current capability, implementation requirements, and future product direction."/><section className="section shell faq-list">{faqs.map(([question,answer],index)=><details key={question} open={index===0}><summary><span>{String(index+1).padStart(2,"0")}</span>{question}</summary><p>{answer}</p></details>)}</section><ProductCTA/><ProductSchema path="/revenueos/faq" name="RevenueOS FAQ" description="RevenueOS product, implementation, AI, integration, and pricing answers." faq={faqs}/></>}

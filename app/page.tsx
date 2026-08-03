@@ -34,6 +34,12 @@ export default function Home() {
 
       <section className="proof-strip"><div className="shell proof-grid"><span>Direct senior communication</span><span>Architecture before excess</span><span>Measured production work</span><span>Rollback included</span></div></section>
 
+      <section className="section shell studio-product-feature">
+        <div><p className="eyebrow">Private Implementation Program</p><h2>ELVN Revenue Operations</h2><p>Revenue operations infrastructure for RFQ-driven industrial sales. Connect product discovery, delivery, ownership, supplier sourcing, cost, quote, order, payment, revenue, and margin without replacing every working CRM or ERP.</p></div>
+        <div className="studio-product-flow"><span>Product page</span><span>RFQ</span><span>Supplier</span><span>Quote</span><span>Payment</span><strong>Margin</strong></div>
+        <div className="button-row"><Link className="button" href="/revenueos">Explore Revenue Operations <span aria-hidden="true">↗</span></Link><Link className="button-quiet" href="/revenueos/pricing">View engagement ranges</Link></div>
+      </section>
+
       <section className="section shell">
         <div className="section-heading"><div><p className="eyebrow">Selected work</p><h2>Commercial products, handled end to end.</h2></div><p>Each case starts with the business constraint, then shows the technical decisions that made the result reliable.</p></div>
         <div className="project-list"><ProjectCard project={projects[0]} feature />{projects.slice(1, 3).map((project) => <ProjectCard project={project} key={project.slug} />)}</div>

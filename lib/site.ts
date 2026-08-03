@@ -13,6 +13,7 @@ export const site = {
 } as const;
 
 export const primaryNavigation = [
+  { href: "/revenueos", label: "Revenue Operations" },
   { href: "/work", label: "Work" },
   { href: "/services", label: "Services" },
   { href: "/process", label: "Process" },
@@ -30,4 +31,15 @@ export const staticRoutes = [
   "/contact",
   "/privacy",
   "/search",
+  "/revenueos",
+  "/revenueos/modules",
+  "/revenueos/integrations",
+  "/revenueos/ai",
+  "/revenueos/pricing",
+  "/revenueos/implementation",
+  "/revenueos/security",
+  "/revenueos/industrial-distribution",
+  "/revenueos/electronic-components",
+  "/revenueos/case-studies",
+  "/revenueos/faq",
 ] as const;

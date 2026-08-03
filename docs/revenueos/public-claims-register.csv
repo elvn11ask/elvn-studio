@@ -1,0 +1,13 @@
+claim,source,date,owner,publishable,approved_wording,expiry/review_date
+"RevenueOS core operates without AI","revenue-os/docs/ENGINEERING-BOOK.md and implementation tests",2026-08-03,"ELVN Studio",yes,"The core system works without an AI provider.",2026-11-03
+"Core module is locally validated","revenue-os/reports/BUILD-VALIDATION-20260803.md",2026-08-03,"ELVN Studio",yes,"Core RevenueOS components are locally validated as a production candidate.",2026-09-03
+"Integration suite passed 9 tests","revenue-os/reports/BUILD-VALIDATION-20260803.md",2026-08-03,"ELVN Studio",no,"Omit exact internal test count from public website; retain for owner review.",2026-09-03
+"MySQL schema contains 22 domain tables","revenue-os/reports/BUILD-VALIDATION-20260803.md",2026-08-03,"ELVN Studio",no,"Do not publish internal schema size.",2026-09-03
+"Full RFQ-to-payment lifecycle validated locally","revenue-os/reports/BUILD-VALIDATION-20260803.md",2026-08-03,"ELVN Studio",yes,"The isolated production candidate validates the RFQ-to-payment state path.",2026-09-03
+"Production integration complete","revenue-os/reports/BUILD-VALIDATION-20260803.md",2026-08-03,"ELVN Studio",no,"Production storefront integration and shadow reconciliation remain implementation gates.",2026-09-03
+"Industrial catalog runtime uses generated stable artifacts","content/projects/icprom/project.yaml and case-study.md",2026-08-03,"ELVN Studio",yes,"Built around real industrial catalog runtime and crawl constraints.",2026-11-03
+"ChipFasteners uses RFQ and BOM inquiry paths","content/projects/chipfasteners/project.yaml and case-study.md",2026-08-03,"ELVN Studio",yes,"Developed from operating experience with exact-part discovery, BOM intake, and RFQ workflows.",2026-11-03
+"Tested across two production B2B catalog environments","Current public project records only; RevenueOS production integration not complete",2026-08-03,"ELVN Studio",no,"Use: Developed from operating experience across industrial and electronic-component catalog environments.",2026-09-03
+"Catalog approaches 90000 product pages","No approved current source recorded in this repository",2026-08-03,"ELVN Studio",no,"Do not publish until an authoritative current report is approved.",2026-09-03
+"Revenue or conversion improvement","No approved source",2026-08-03,"ELVN Studio",no,"No conversion, revenue, or margin uplift claim.",2026-09-03
+"RevenueOS AI trademark registered","No registration",2026-08-03,"ELVN Studio",no,"RevenueOS AI is a working name; no registration is claimed.",2026-11-03
