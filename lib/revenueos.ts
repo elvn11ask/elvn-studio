@@ -19,11 +19,20 @@ export const revenueOSRoutes = [
   "/revenueos/electronic-components",
   "/revenueos/case-studies",
   "/revenueos/faq",
+  "/revenueos/knowledge-graph",
+  "/revenueos/knowledge-graph/architecture",
+  "/revenueos/knowledge-graph/use-cases",
+  "/revenueos/knowledge-graph/ai",
+  "/revenueos/knowledge-graph/security",
+  "/revenueos/knowledge-graph/pricing",
+  "/revenueos/knowledge-graph/faq",
+  "/news/revenue-knowledge-graph",
 ] as const;
 
 export const revenueOSNavigation = [
   ["Overview", "/revenueos"],
   ["Modules", "/revenueos/modules"],
+  ["Knowledge Graph", "/revenueos/knowledge-graph"],
   ["Integrations", "/revenueos/integrations"],
   ["AI", "/revenueos/ai"],
   ["Pricing", "/revenueos/pricing"],
@@ -56,11 +65,15 @@ export const modules = [
   { name: "Integration Adapters", problem: "Every website, CRM, and ERP expresses the same commercial event differently.", users: "Implementation teams", tracks: "Mapping version, source identity, destination identity, and reconciliation state", outcome: "Existing systems can remain in place while the workflow becomes observable." },
   { name: "Optional AI Layer", problem: "Teams need assistance without surrendering commercial authority to a model.", users: "Sales, procurement, and management", tracks: "Provider, input policy, suggestion, approval, and final human action", outcome: "AI reduces review effort while deterministic records remain authoritative." },
   { name: "Self-Hosted and Private Cloud", problem: "Some organizations cannot place commercial data in a shared SaaS environment.", users: "IT, security, and procurement", tracks: "Deployment boundary, version, backup, health, and support state", outcome: "The operating model can fit customer-controlled infrastructure." },
+  { name: "Revenue Knowledge Graph", problem: "Operational records explain what changed but not how product, RFQ, supplier, quote, payment, and margin evidence relate.", users: "Revenue operations, sales, procurement, finance, and management", tracks: "Versioned commercial relationships, source provenance, fact class, currency, and event time", outcome: "Teams can explain why revenue happened without replacing authoritative systems." },
 ] as const;
 
-export type IntegrationClass = "Native adapter" | "Standard API" | "Custom adapter" | "CSV/file bridge" | "Webhook" | "Discovery required";
+export type IntegrationClass = "Native adapter" | "Standard API" | "Custom adapter" | "CSV/file bridge" | "Webhook" | "Production candidate" | "Discovery required";
 
 export const integrations: ReadonlyArray<{ group: string; name: string; classification: IntegrationClass; note: string }> = [
+  { group: "Knowledge Graph adapters", name: "ICPROM", classification: "Production candidate", note: "Candidate mapping for product, RFQ, and commercial events; live credentials and shadow reconciliation remain release gates." },
+  { group: "Knowledge Graph adapters", name: "ChipFasteners", classification: "Production candidate", note: "Candidate RFQ adapter rejects scanner traffic; live human-flow and source reconciliation remain release gates." },
+  { group: "Knowledge Graph adapters", name: "ELVN Studio", classification: "Production candidate", note: "Server-side assessment adapter excludes names, email addresses, free-text messages, and integration notes from graph events." },
   ...["Custom PHP", "Next.js", "React"].map((name) => ({ group: "Websites and commerce", name, classification: "Native adapter" as const, note: "First-party event and RFQ adapter pattern; implementation validation required per site." })),
   ...["Magento / Adobe Commerce", "Shopify", "WooCommerce", "OpenCart", "PrestaShop", "BigCommerce", "Custom B2B catalogs"].map((name) => ({ group: "Websites and commerce", name, classification: "Standard API" as const, note: "Platform API, webhook, or customer-controlled adapter after discovery." })),
   ...["HubSpot", "Salesforce", "Pipedrive", "Zoho", "Microsoft Dynamics", "Bitrix24", "Odoo", "Custom CRM"].map((name) => ({ group: "CRM", name, classification: "Standard API" as const, note: "Outbox-based synchronization; scope depends on edition and customer permissions." })),

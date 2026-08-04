@@ -1,0 +1,6 @@
+import type { Metadata } from "next";
+import { GraphCTA, GraphHero } from "@/components/revenueos/graph-shell";
+import { ProductSchema } from "@/components/revenueos/product-shell";
+import { graphPricing } from "@/lib/revenue-knowledge-graph";
+export const metadata:Metadata={title:"Revenue Knowledge Graph Pricing",description:"One-time assessment and implementation ranges for a Revenue Knowledge Graph design partner engagement.",alternates:{canonical:"/revenueos/knowledge-graph/pricing"}};
+export default function Page(){return <><GraphHero eyebrow="Knowledge Graph · Typical ranges" title="One-time implementation. Ongoing service is separate." lede="The displayed range covers the stated assessment or implementation scope. Hosting, support, maintenance, and optional model usage are quoted separately after the operating boundary is known."/><section className="section shell pricing-catalog">{graphPricing.map(([name,range,basis,summary],i)=><article key={name}><span>0{i+1}</span><div><p className="eyebrow">{basis}</p><h2>{name}</h2><p>{summary}</p><p className="pricing-recurring">Ongoing service: separately scoped</p></div><strong>{range}</strong></article>)}</section><GraphCTA/><ProductSchema path="/revenueos/knowledge-graph/pricing" name="Revenue Knowledge Graph Pricing" description="Typical one-time implementation ranges."/></>}
