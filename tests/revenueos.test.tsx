@@ -32,8 +32,8 @@ const validAssessment = {
 
 describe("Revenue Operations product area", () => {
   it("publishes the complete route and module architecture", () => {
-    expect(revenueOSRoutes).toHaveLength(11);
-    expect(modules).toHaveLength(20);
+    expect(revenueOSRoutes).toHaveLength(19);
+    expect(modules).toHaveLength(21);
   });
 
   it("publishes only the approved analytics services and states every price basis", () => {

@@ -11,6 +11,7 @@ Production portfolio and commercial site for the independent ELVN Studio practic
 - Build-time local search data with no external search service
 - Signed contact submissions, origin checks, length limits, honeypot, rate limiting, and safe test mode
 - Consent-first analytics preparation; analytics remain disabled until configured
+- Revenue Operations product area with the Revenue Knowledge Graph design-partner module, public architecture, use cases, security, AI controls, pricing, FAQ, and launch package
 - Standalone Next.js container, isolated Nginx configuration, health check, and rollback-oriented release structure
 
 ## Architecture
@@ -42,6 +43,8 @@ pnpm dev
 
 Never publish customer records, admin screens, private analytics, credentials, unsupported metrics, or an AI capability that is only a prepared integration path.
 
+The public Knowledge Graph examples under `public-package/revenue-knowledge-graph` are intentionally synthetic and redacted. The production schema, source mappings, scoring rules, and private Revenue Operations implementation are not part of this repository.
+
 ## Validation
 
 ```bash
@@ -62,6 +65,7 @@ All names are documented in `.env.example`. Values belong in local secrets, GitH
 - `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID`: optional private notification
 - `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION`, `NEXT_PUBLIC_BING_SITE_VERIFICATION`: blank until real values exist
 - `NEXT_PUBLIC_GA_ID`, `NEXT_PUBLIC_CLARITY_ID`: blank and inactive at launch
+- `REVENUE_GRAPH_URL`, `REVENUE_GRAPH_TOKEN`: optional server-only Studio assessment projection; both must be configured or delivery stays disabled
 
 ## Deployment and rollback
 

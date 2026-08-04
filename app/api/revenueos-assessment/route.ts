@@ -4,6 +4,7 @@ import { NextResponse } from "next/server";
 import { isRateLimited, verifyContactToken } from "@/lib/contact";
 import { sendTelegramMessage } from "@/lib/contact-delivery";
 import { assessmentTimingValid, buildRevenueAssessmentBrief, revenueAssessmentSchema } from "@/lib/revenueos-assessment";
+import { deliverStudioAssessmentToRevenueGraph } from "@/lib/revenue-graph";
 import { site } from "@/lib/site";
 
 function originAllowed(request:Request){const expected=new URL(process.env.NEXT_PUBLIC_SITE_URL||site.url).origin;const origin=request.headers.get("origin");return process.env.NODE_ENV!=="production"&&origin?.startsWith("http://localhost:")?true:origin===expected}
@@ -31,6 +32,7 @@ export async function POST(request:Request){
       if(!confirmation.accepted.length)throw new Error("Confirmation mailbox did not accept the message");
       if(process.env.TELEGRAM_BOT_TOKEN&&process.env.TELEGRAM_CHAT_ID)await sendTelegramMessage(`New ELVN Revenue Operations assessment\n\n${brief}`.slice(0,3900));
     } else return NextResponse.json({ok:false,message:`Delivery is not configured. Please email ${site.email}.`,leadId},{status:503});
+    await deliverStudioAssessmentToRevenueGraph(data,leadId);
     return NextResponse.json({ok:true,message:"Your assessment request was delivered. Expect a practical scope response rather than an automated sales sequence.",leadId});
   }catch{return NextResponse.json({ok:false,message:`Delivery failed. Please email ${site.email} and include reference ${leadId}.`,leadId},{status:502})}
 }

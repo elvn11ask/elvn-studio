@@ -1,0 +1,11 @@
+{
+  "event_type": "rfq_submitted",
+  "schema_version": "public-example-v1",
+  "tenant_id": "demo-tenant",
+  "correlation_id": "DEMO-RFQ-001",
+  "source_system": "demo-catalog",
+  "idempotency_key": "demo-catalog:rfq:001",
+  "occurred_at": "2026-08-04T09:00:00Z",
+  "provenance": { "adapter": "public-demo-v1", "source_record_id": "DEMO-RFQ-001" },
+  "payload": { "note": "Redacted public example; production entity and relationship mappings are private." }
+}

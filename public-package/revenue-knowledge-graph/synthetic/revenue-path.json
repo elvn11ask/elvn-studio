@@ -1,0 +1,11 @@
+{
+  "synthetic": true,
+  "path": [
+    { "type": "Product", "id": "PRD-DEMO-1" },
+    { "type": "RFQ", "id": "RFQ-DEMO-1" },
+    { "type": "Supplier", "id": "SUP-DEMO-1" },
+    { "type": "Quote", "id": "QTE-DEMO-1", "currency": "USD", "observed_at": "2026-08-04T10:00:00Z" },
+    { "type": "Payment", "id": "PAY-DEMO-1", "currency": "USD", "observed_at": "2026-08-18T12:00:00Z" },
+    { "type": "Margin", "id": "MRG-DEMO-1", "currency": "USD", "observed_at": "2026-08-18T12:01:00Z" }
+  ]
+}

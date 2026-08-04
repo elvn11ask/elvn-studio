@@ -42,4 +42,12 @@ export const staticRoutes = [
   "/revenueos/electronic-components",
   "/revenueos/case-studies",
   "/revenueos/faq",
+  "/revenueos/knowledge-graph",
+  "/revenueos/knowledge-graph/architecture",
+  "/revenueos/knowledge-graph/use-cases",
+  "/revenueos/knowledge-graph/ai",
+  "/revenueos/knowledge-graph/security",
+  "/revenueos/knowledge-graph/pricing",
+  "/revenueos/knowledge-graph/faq",
+  "/news/revenue-knowledge-graph",
 ] as const;
