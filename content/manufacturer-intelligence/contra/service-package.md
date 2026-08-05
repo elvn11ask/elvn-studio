@@ -1,6 +1,6 @@
 # Contra Service Package
 
-Status: READY_TO_PUBLISH after production smoke. Currency: USD. Pricing is indicative and finalized after qualification.
+Status: READY_TO_PUBLISH after production smoke. The product is a Production Patch Preview available through selected implementation engagements. Currency: USD. Pricing is indicative and finalized after qualification.
 
 ## 1. Manufacturer Data Assessment
 

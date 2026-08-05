@@ -11,8 +11,8 @@ const articles = [
   {
     href: "/news/manufacturer-intelligence",
     date: "August 5, 2026",
-    title: "From SKU Search to Manufacturer Intelligence",
-    summary: "Introducing a private preview for exact-MPN enrichment, official-source evidence, controlled review, and optional AI assistance.",
+    title: "Manufacturer Intelligence moves from preview to a RevenueOS production patch",
+    summary: "The private v0.1 patch adds a versioned module boundary, exact-MPN controls, evidence review, reversible publication and controlled rollout gates.",
   },
   {
     href: "/news/revenue-knowledge-graph",

@@ -1,10 +1,10 @@
 # Telegram Launch Package
 
-Status: READY_TO_PUBLISH after production smoke.
+Status: READY_TO_PUBLISH after production smoke and private patch PR verification.
 
 ## Full launch announcement
 
-Manufacturer Intelligence is now available in preview as part of ELVN Revenue Operations.
+Manufacturer Intelligence is moving from a product preview to a versioned RevenueOS production patch.
 
 The module is built for industrial and electronic-component catalogs where product identity cannot be reduced to a normalized part number.
 
@@ -20,7 +20,7 @@ It combines:
 
 AI helps find and interpret information, but it cannot turn an unsupported claim into a verified product fact.
 
-The module is currently available through selected private implementation engagements.
+The first production rollout remains deliberately small: connector certification, owner review and field-level canaries on ICPROM and ChipFasteners. The module is available through selected private implementation engagements.
 
 https://studio.elvn.monster/revenueos/manufacturer-intelligence
 

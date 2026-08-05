@@ -12,13 +12,15 @@ describe("Manufacturer Intelligence public preview", () => {
     const markup = renderToStaticMarkup(<ManufacturerIntelligencePage />);
     expect(h1Count(markup)).toBe(1);
     expect(markup).toContain("v0.1.0-preview");
-    expect(markup).toContain("Private Implementation Program");
+    expect(markup).toContain("Production Patch Preview");
+    expect(markup).toContain("Implemented");
+    expect(markup).toContain("Controlled rollout");
     expect(markup).toContain("Request a Manufacturer Data Assessment");
     expect(markup).toContain("Explore the Architecture");
     expect(markup).toContain("BreadcrumbList");
     expect(markup).toContain("FAQPage");
     expect(markup).toContain("Service");
-    expect(markup.match(/Preview · Private Implementation Program/g)).toHaveLength(1);
+    expect(markup.match(/Production Patch Preview/g)).toHaveLength(1);
     expect(markup).not.toContain("general availability");
   });
 
@@ -26,7 +28,9 @@ describe("Manufacturer Intelligence public preview", () => {
     const markup = renderToStaticMarkup(<ManufacturerIntelligenceNews />);
     expect(h1Count(markup)).toBe(1);
     expect(markup).toContain("NewsArticle");
-    expect(markup).toContain("honest preview");
+    expect(markup).toContain("Production Patch Preview");
+    expect(markup).toContain("not general availability");
+    expect(markup).toContain("controlled rollout gates");
     expect(markup).not.toMatch(/500 products|10 exact|64 review|2% candidate/i);
   });
 

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ProductCTA, ProductHero, ProductSchema } from "@/components/revenueos/product-shell";
-import { manufacturerCapabilities, manufacturerControls, manufacturerFaq, manufacturerFlow, manufacturerIntelligence, manufacturerPricing, manufacturerPricingFactors } from "@/lib/manufacturer-intelligence";
+import { manufacturerCapabilities, manufacturerControlledRollout, manufacturerControls, manufacturerFaq, manufacturerFlow, manufacturerImplemented, manufacturerIntelligence, manufacturerPricing, manufacturerPricingFactors } from "@/lib/manufacturer-intelligence";
 
 export const metadata: Metadata = {
   title: "Manufacturer Intelligence for Industrial Catalogs",
@@ -14,7 +14,9 @@ export const metadata: Metadata = {
 export default function ManufacturerIntelligencePage() {
   return <>
     <ProductHero eyebrow={`Revenue Operations · Product Data Intelligence · ${manufacturerIntelligence.version}`} title={manufacturerIntelligence.tagline} lede={manufacturerIntelligence.description} actions={false} status={false} />
-    <section className="shell manufacturer-actions"><div className="button-row"><Link className="button" href="/revenueos/implementation#assessment">Request a Manufacturer Data Assessment <span aria-hidden="true">↗</span></Link><a className="button-quiet" href="#connector-architecture">Explore the Architecture</a></div><p className="product-status"><span className="status-dot" /> {manufacturerIntelligence.status} · Selected engagements</p></section>
+    <section className="shell manufacturer-actions"><div className="button-row"><Link className="button" href="/revenueos/implementation#assessment">Request a Manufacturer Data Assessment <span aria-hidden="true">↗</span></Link><a className="button-quiet" href="#connector-architecture">Explore the Architecture</a></div><p className="product-status"><span className="status-dot" /> {manufacturerIntelligence.status} · Available through selected implementation engagements</p></section>
+
+    <section className="section shell"><div className="section-heading"><div><p className="eyebrow">Patch status</p><h2>A real module boundary, with rollout gates still closed by design.</h2></div><p>The private v0.1 patch is installable and reversible. It is not a claim of broad connector coverage or unattended catalog publication.</p></div><div className="security-grid"><article><span>01</span><h2>Implemented</h2><ul>{manufacturerImplemented.map((item) => <li key={item}>{item}</li>)}</ul></article><article><span>02</span><h2>Controlled rollout</h2><ul>{manufacturerControlledRollout.map((item) => <li key={item}>{item}</li>)}</ul></article></div></section>
 
     <section className="section shell content-grid"><aside><p className="eyebrow">The product-data problem</p><h2>Catalog scale creates an evidence problem before it creates an AI problem.</h2></aside><div className="prose"><p>Industrial product data is spread across official product pages, datasheets, package drawings, lifecycle notices, and customer-owned systems. Similar names do not make orderable variants interchangeable.</p><p>The safest unit of work is a governed manufacturer connector applied to a bounded cohort, with exact manufacturer and MPN identity preserved for every candidate field.</p></div></section>
 
