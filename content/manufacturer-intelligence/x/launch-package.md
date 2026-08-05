@@ -1,22 +1,22 @@
 # X Launch Package
 
-Status: READY_TO_PUBLISH after production smoke. All copy is English and limited to three hashtags per post.
+Status: READY_TO_PUBLISH after production smoke. Private patch PR exists. All copy is English and limited to three hashtags per post.
 
 Product URL: https://studio.elvn.monster/revenueos/manufacturer-intelligence
 
 ## Primary launch post
 
-Most product-data projects still work SKU by SKU.
+Manufacturer Intelligence is becoming a production patch for ELVN RevenueOS.
 
-Manufacturer Intelligence replaces that with reusable manufacturer connectors, exact-MPN controls, datasheet intelligence and evidence-backed review.
+It connects approved manufacturer sources, exact orderable MPNs, datasheet intelligence, optional AI assistance and field-level review in one controlled workflow.
 
-AI assists the work. Verified sources control publication.
+AI can suggest. Evidence controls verification. Review controls publication.
 
-Now available in preview through selected ELVN Revenue Operations implementations.
+Available through selected implementation engagements.
 
 https://studio.elvn.monster/revenueos/manufacturer-intelligence
 
-#IndustrialTech #ProductData #AI
+#IndustrialTech #ProductData #RevenueOps
 
 ## Founder post
 
