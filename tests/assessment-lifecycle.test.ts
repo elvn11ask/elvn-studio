@@ -33,7 +33,7 @@ const assessment = () => revenueAssessmentSchema.parse({
 beforeEach(() => {
   directory = fs.mkdtempSync(path.join(os.tmpdir(), "studio-lifecycle-"));
   process.env.STUDIO_LEADS_DB_PATH = path.join(directory, "leads.sqlite");
-  process.env.CONTACT_SIGNING_SECRET = "test-signing-secret-with-at-least-32-characters";
+  process.env.CONTACT_SIGNING_SECRET = "x".repeat(64);
   delete process.env.TELEGRAM_BOT_TOKEN;
   delete process.env.TELEGRAM_CHAT_ID;
   delete process.env.REVENUE_GRAPH_URL;
