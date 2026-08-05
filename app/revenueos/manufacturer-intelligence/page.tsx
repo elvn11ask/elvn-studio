@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 export default function ManufacturerIntelligencePage() {
   return <>
-    <ProductHero eyebrow={`Revenue Operations · Product Data Intelligence · ${manufacturerIntelligence.version}`} title={manufacturerIntelligence.tagline} lede={manufacturerIntelligence.description} actions={false} />
+    <ProductHero eyebrow={`Revenue Operations · Product Data Intelligence · ${manufacturerIntelligence.version}`} title={manufacturerIntelligence.tagline} lede={manufacturerIntelligence.description} actions={false} status={false} />
     <section className="shell manufacturer-actions"><div className="button-row"><Link className="button" href="/revenueos/implementation#assessment">Request a Manufacturer Data Assessment <span aria-hidden="true">↗</span></Link><a className="button-quiet" href="#connector-architecture">Explore the Architecture</a></div><p className="product-status"><span className="status-dot" /> {manufacturerIntelligence.status} · Selected engagements</p></section>
 
     <section className="section shell content-grid"><aside><p className="eyebrow">The product-data problem</p><h2>Catalog scale creates an evidence problem before it creates an AI problem.</h2></aside><div className="prose"><p>Industrial product data is spread across official product pages, datasheets, package drawings, lifecycle notices, and customer-owned systems. Similar names do not make orderable variants interchangeable.</p><p>The safest unit of work is a governed manufacturer connector applied to a bounded cohort, with exact manufacturer and MPN identity preserved for every candidate field.</p></div></section>

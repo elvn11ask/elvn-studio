@@ -18,6 +18,7 @@ describe("Manufacturer Intelligence public preview", () => {
     expect(markup).toContain("BreadcrumbList");
     expect(markup).toContain("FAQPage");
     expect(markup).toContain("Service");
+    expect(markup.match(/Preview · Private Implementation Program/g)).toHaveLength(1);
     expect(markup).not.toContain("general availability");
   });
 
@@ -34,6 +35,7 @@ describe("Manufacturer Intelligence public preview", () => {
     expect(productMetadata.alternates?.canonical).toBe("/revenueos/manufacturer-intelligence");
     expect(newsMetadata.alternates?.canonical).toBe("/news/manufacturer-intelligence");
     expect(indexMarkup).toContain("/news/manufacturer-intelligence");
+    expect(indexMarkup).not.toContain("<main");
     expect(manufacturerIntelligence.version).toBe("v0.1.0-preview");
   });
 });
