@@ -26,13 +26,16 @@ export const revenueOSRoutes = [
   "/revenueos/knowledge-graph/security",
   "/revenueos/knowledge-graph/pricing",
   "/revenueos/knowledge-graph/faq",
+  "/revenueos/manufacturer-intelligence",
   "/news/revenue-knowledge-graph",
+  "/news/manufacturer-intelligence",
 ] as const;
 
 export const revenueOSNavigation = [
   ["Overview", "/revenueos"],
   ["Modules", "/revenueos/modules"],
   ["Knowledge Graph", "/revenueos/knowledge-graph"],
+  ["Manufacturer Intelligence", "/revenueos/manufacturer-intelligence"],
   ["Integrations", "/revenueos/integrations"],
   ["AI", "/revenueos/ai"],
   ["Pricing", "/revenueos/pricing"],

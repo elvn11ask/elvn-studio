@@ -32,7 +32,7 @@ const validAssessment = {
 
 describe("Revenue Operations product area", () => {
   it("publishes the complete route and module architecture", () => {
-    expect(revenueOSRoutes).toHaveLength(19);
+    expect(revenueOSRoutes).toHaveLength(21);
     expect(modules).toHaveLength(21);
   });
 
