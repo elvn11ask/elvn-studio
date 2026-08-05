@@ -1,0 +1,6 @@
+The following unrelated source-workspace files are explicitly excluded from this branch, commit, PR, release and deployment:
+
+public/revenue-knowledge-graph/contra-cover.png
+public/revenue-knowledge-graph/contra-cover-hq.png
+
+No private RevenueOS core, real connectors, source URLs, access methods, credentials, infrastructure details, customer data or real SKU output is included.
