@@ -20,6 +20,9 @@ AI remains optional and cannot independently verify or publish product facts.
 Private beta:
 https://studio.elvn.monster/revenueos/manufacturer-intelligence
 
+Интерактивная демоверсия без регистрации:
+https://app.elvn.monster/demo
+
 #ProductData #IndustrialTech #B2B
 
 ## Architecture post
@@ -43,3 +46,6 @@ Week 3: controlled cohort scan, evidence review, conflicts and optional AI revie
 Week 4: publication simulation, approval gates, rollback exercise and commercial operating review.
 
 Access remains invitation-only and contract-managed.
+
+Safe product tour with synthetic data:
+https://app.elvn.monster/demo

@@ -1,5 +1,12 @@
 # X Launch Package
 
+## Approved launch assets
+
+- `public/manufacturer-intelligence/social/x-launch-collage.png` — primary 16:9 launch visual combining Overview, Review, and Publication simulation.
+- `public/manufacturer-intelligence/control-center-overview.png` — optional second image when the full dashboard needs to remain readable.
+
+Both assets show synthetic data only. Keep the `Private Beta` and `Synthetic data preview` labels visible; do not crop them out.
+
 ## Primary post
 
 Manufacturer Intelligence now has a Control Center.
@@ -11,6 +18,9 @@ AI is optional. Evidence controls verification. Humans control publication.
 Private beta:
 https://studio.elvn.monster/revenueos/manufacturer-intelligence
 
+Watch the 2-minute demo:
+https://app.elvn.monster/demo
+
 #ProductData #IndustrialTech #AI
 
 ## Dashboard screenshot
@@ -18,7 +28,7 @@ https://studio.elvn.monster/revenueos/manufacturer-intelligence
 A serious product-data dashboard should show operational truth: exact matches, conflicts, review backlog, connector health and publication candidates. No decorative AI metrics. No unsupported confidence theater.
 
 Synthetic Control Center workspace:
-https://studio.elvn.monster/revenueos/manufacturer-intelligence
+https://app.elvn.monster/demo
 
 #DataEngineering #B2B #PIM
 
@@ -27,6 +37,8 @@ https://studio.elvn.monster/revenueos/manufacturer-intelligence
 Manufacturer Intelligence scans are bounded by product count, source requests, documents, runtime, concurrency and optional AI cost. Teams can pause, resume, cancel and retry at safe product boundaries.
 
 Private beta: https://studio.elvn.monster/revenueos/manufacturer-intelligence
+
+Demo: https://app.elvn.monster/demo
 
 #ProductData #IndustrialTech
 
@@ -79,6 +91,8 @@ The product keeps evidence, inference, review and publication separate. That sep
 7/ AI is optional. The deterministic workflow remains complete without it.
 
 Private beta: https://studio.elvn.monster/revenueos/manufacturer-intelligence
+
+Watch the demo: https://app.elvn.monster/demo
 
 #DataEngineering #ProductData #B2B
 
