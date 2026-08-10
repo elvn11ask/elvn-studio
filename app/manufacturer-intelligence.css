@@ -6,38 +6,66 @@
   margin-top: 28px;
 }
 
-.manufacturer-actions + .section {
-  padding-top: 0;
-}
-
-.manufacturer-actions + .section + .product-flow ol {
+.manufacturer-actions + .product-flow ol {
   grid-template-columns: repeat(6, 1fr);
 }
 
-.manufacturer-price-factors {
-  max-width: 840px;
-  margin-top: 42px;
-  padding: 28px;
-  border: 1px solid var(--line);
+.control-center-showcase {
+  padding-top: 20px;
 }
 
-.manufacturer-price-factors ul {
-  columns: 2;
-  padding-left: 20px;
+.dashboard-frame {
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: #f5f7f5;
+  box-shadow: 0 28px 70px rgb(12 33 26 / 10%);
+}
+
+.dashboard-frame img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.dashboard-frame figcaption {
+  padding: 18px 20px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+
+.dashboard-pair {
+  display: grid;
+  grid-template-columns: minmax(0, 2.2fr) minmax(240px, 0.8fr);
+  gap: 24px;
+  align-items: start;
+  margin-top: 24px;
+}
+
+.dashboard-mobile {
+  max-width: 390px;
+  justify-self: end;
 }
 
 @media (max-width: 900px) {
-  .manufacturer-actions + .section + .product-flow ol {
+  .manufacturer-actions + .product-flow ol {
     grid-template-columns: repeat(3, 1fr);
+  }
+
+  .dashboard-pair {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-mobile {
+    justify-self: center;
   }
 }
 
 @media (max-width: 560px) {
-  .manufacturer-actions + .section + .product-flow ol {
+  .manufacturer-actions + .product-flow ol {
     grid-template-columns: 1fr;
-  }
-
-  .manufacturer-price-factors ul {
-    columns: 1;
   }
 }

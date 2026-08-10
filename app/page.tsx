@@ -37,7 +37,13 @@ export default function Home() {
       <section className="section shell studio-product-feature">
         <div><p className="eyebrow">Private Implementation Program</p><h2>ELVN Revenue Operations</h2><p>Revenue operations infrastructure for RFQ-driven industrial sales. Connect product discovery, delivery, ownership, supplier sourcing, cost, quote, order, payment, revenue, and margin without replacing every working CRM or ERP.</p></div>
         <div className="studio-product-flow"><span>Product page</span><span>RFQ</span><span>Supplier</span><span>Quote</span><span>Payment</span><strong>Margin</strong></div>
-        <div className="button-row"><Link className="button" href="/revenueos">Explore Revenue Operations <span aria-hidden="true">↗</span></Link><Link className="button-quiet" href="/revenueos/manufacturer-intelligence">Manufacturer Intelligence preview</Link></div>
+        <div className="button-row"><Link className="button" href="/revenueos">Explore Revenue Operations <span aria-hidden="true">↗</span></Link><Link className="button-quiet" href="/revenueos/pricing">View engagement ranges</Link></div>
+      </section>
+
+      <section className="section shell studio-product-feature">
+        <div><p className="eyebrow">Revenue Operations module</p><h2>Manufacturer Intelligence</h2><p>Turn approved manufacturer documentation into evidence-backed product data while preserving exact orderable part identity and keeping publication under human control.</p></div>
+        <div className="studio-product-flow"><span>Source policy</span><span>Exact MPN</span><span>Official evidence</span><span>Review</span><span>Simulation</span><strong>Controlled data</strong></div>
+        <div className="button-row"><Link className="button" href="/revenueos/manufacturer-intelligence">Explore Manufacturer Intelligence <span aria-hidden="true">↗</span></Link><Link className="button-quiet" href="/news/manufacturer-intelligence">Read the launch note</Link></div>
       </section>
 
       <section className="section shell">
