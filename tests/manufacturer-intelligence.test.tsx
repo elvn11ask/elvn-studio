@@ -11,26 +11,26 @@ describe("Manufacturer Intelligence public preview", () => {
   it("renders one H1, transparent maturity, CTAs, and public schema", () => {
     const markup = renderToStaticMarkup(<ManufacturerIntelligencePage />);
     expect(h1Count(markup)).toBe(1);
-    expect(markup).toContain("v0.1.0-preview");
-    expect(markup).toContain("Production Patch Preview");
-    expect(markup).toContain("Implemented");
-    expect(markup).toContain("Controlled rollout");
+    expect(markup).toContain("v0.1.0-private-beta");
+    expect(markup).toContain("Private Beta");
+    expect(markup).toContain("Design Partner Access");
+    expect(markup).toContain("Contract-managed access");
+    expect(markup).toContain("Request Access");
     expect(markup).toContain("Request a Manufacturer Data Assessment");
-    expect(markup).toContain("Explore the Architecture");
+    expect(markup).toContain("The working product");
     expect(markup).toContain("BreadcrumbList");
     expect(markup).toContain("FAQPage");
     expect(markup).toContain("Service");
-    expect(markup.match(/Production Patch Preview/g)).toHaveLength(1);
-    expect(markup).not.toContain("general availability");
+    expect(markup).not.toContain("General Availability");
   });
 
   it("publishes an honest news article without confidential experiment statistics", () => {
     const markup = renderToStaticMarkup(<ManufacturerIntelligenceNews />);
     expect(h1Count(markup)).toBe(1);
     expect(markup).toContain("NewsArticle");
-    expect(markup).toContain("Production Patch Preview");
-    expect(markup).toContain("not general availability");
-    expect(markup).toContain("controlled rollout gates");
+    expect(markup).toContain("Private Beta");
+    expect(markup).toContain("invitation-only");
+    expect(markup).toContain("read-only adapters");
     expect(markup).not.toMatch(/500 products|10 exact|64 review|2% candidate/i);
   });
 
@@ -40,6 +40,6 @@ describe("Manufacturer Intelligence public preview", () => {
     expect(newsMetadata.alternates?.canonical).toBe("/news/manufacturer-intelligence");
     expect(indexMarkup).toContain("/news/manufacturer-intelligence");
     expect(indexMarkup).not.toContain("<main");
-    expect(manufacturerIntelligence.version).toBe("v0.1.0-preview");
+    expect(manufacturerIntelligence.version).toBe("v0.1.0-private-beta");
   });
 });

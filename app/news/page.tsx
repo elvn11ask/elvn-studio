@@ -23,5 +23,5 @@ const articles = [
 ] as const;
 
 export default function NewsPage() {
-  return <main className="shell graph-news"><p className="eyebrow">ELVN Studio</p><h1>Product news</h1><p className="product-lede">Release notes and field perspectives from our industrial product engineering work.</p><div className="module-catalog">{articles.map((article, index) => <article key={article.href}><span>{String(index + 1).padStart(2, "0")}</span><div><p className="eyebrow">{article.date}</p><h2><Link href={article.href}>{article.title}</Link></h2><p>{article.summary}</p><Link className="text-link" href={article.href}>Read the update <span aria-hidden="true">↗</span></Link></div></article>)}</div></main>;
+  return <section className="shell graph-news"><p className="eyebrow">ELVN Studio</p><h1>Product news</h1><p className="product-lede">Release notes and field perspectives from our industrial product engineering work.</p><div className="module-catalog">{articles.map((article, index) => <article key={article.href}><span>{String(index + 1).padStart(2, "0")}</span><div><p className="eyebrow">{article.date}</p><h2><Link href={article.href}>{article.title}</Link></h2><p>{article.summary}</p><Link className="text-link" href={article.href}>Read the update <span aria-hidden="true">↗</span></Link></div></article>)}</div></section>;
 }
