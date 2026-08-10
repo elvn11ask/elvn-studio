@@ -24,6 +24,14 @@ ELVN Control Center connects read-only catalog data, validates exact manufacture
 
 Assessment → bounded pilot → implementation → annual platform and support. Private Beta access is contract-managed. Customer credentials, source locations and catalog data remain private.
 
+## Live demo
+
+Watch the safe interactive product tour:
+
+https://app.elvn.monster/demo
+
+The walkthrough uses synthetic records, requires no account, connects to no customer system and performs no public writes.
+
 ## Screenshots
 
 Use the portfolio collage first:
