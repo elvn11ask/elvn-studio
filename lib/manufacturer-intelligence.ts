@@ -1,27 +1,11 @@
 export const manufacturerIntelligence = {
   name: "Manufacturer Intelligence",
-  version: "v0.1.0-preview",
+  version: "v0.1.0-private-beta",
   category: "AI-Assisted Manufacturer Intelligence for Industrial Catalogs",
   tagline: "Turn official manufacturer documentation into evidence-backed product data.",
   description: "Manufacturer Intelligence connects approved manufacturer sources, datasheets, and optional AI-assisted extraction to enrich industrial catalogs without merging variants or publishing unsupported specifications.",
-  status: "Production Patch Preview",
+  status: "Private Beta · Design Partner Access",
 } as const;
-
-export const manufacturerImplemented = [
-  "Versioned optional RevenueOS module architecture",
-  "Exact manufacturer and orderable-MPN identity contract",
-  "Optional AI provider boundary with deterministic fallback",
-  "Datasheet evidence and qualifier-preserving workflow",
-  "Tenant-scoped review and append-only decisions",
-  "Publication simulation with field-level rollback",
-  "Disabled-by-default production adapter boundaries",
-] as const;
-
-export const manufacturerControlledRollout = [
-  "Connector source-policy approval and certification",
-  "Owner and legal review",
-  "Tiny field-level catalog publication canaries",
-] as const;
 
 export const manufacturerFlow = [
   "Manufacturer policy",

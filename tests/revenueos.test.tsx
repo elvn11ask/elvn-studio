@@ -5,6 +5,7 @@ import robots from "@/app/robots";
 import { issueContactToken } from "@/lib/contact";
 import { assessmentTimingValid, buildRevenueAssessmentBrief, revenueAssessmentSchema } from "@/lib/revenueos-assessment";
 import { faqs, integrations, modules, pricing, revenueOSRoutes } from "@/lib/revenueos";
+import { manufacturerIntelligence } from "@/lib/manufacturer-intelligence";
 
 const validAssessment = {
   name: "Operations owner",
@@ -72,5 +73,11 @@ describe("Revenue Operations product area", () => {
     const config = robots();
     expect(config.rules).toEqual(expect.arrayContaining([expect.objectContaining({ allow: "/" })]));
     expect(JSON.stringify(config.rules)).toContain("/api/revenueos-assessment");
+  });
+
+  it("positions Manufacturer Intelligence as contract-managed private beta", () => {
+    expect(manufacturerIntelligence.version).toBe("v0.1.0-private-beta");
+    expect(manufacturerIntelligence.status).toContain("Private Beta");
+    expect(manufacturerIntelligence.status).not.toContain("General Availability");
   });
 });
