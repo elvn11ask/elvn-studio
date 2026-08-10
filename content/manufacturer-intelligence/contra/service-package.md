@@ -26,13 +26,26 @@ Assessment → bounded pilot → implementation → annual platform and support.
 
 ## Screenshots
 
-Use only:
+Use the portfolio collage first:
+
+- `public/manufacturer-intelligence/social/contra-portfolio-collage.png`
+
+Supporting product screens:
 
 - `/manufacturer-intelligence/control-center-overview.png`
 - `/manufacturer-intelligence/control-center-review-mobile.png`
 - `/manufacturer-intelligence/control-center-publication.png`
 
-All images contain synthetic data.
+All images contain synthetic data. The collage is the recommended Contra cover because it communicates the dashboard, review, and publication workflow in one media slot.
+
+## Media order
+
+1. Portfolio collage
+2. Overview dashboard
+3. Publication simulation
+4. Mobile evidence review
+
+Do not describe the screenshots as customer deployments. They represent the working Private Beta with synthetic records and read-only publication controls.
 
 ## Tags
 

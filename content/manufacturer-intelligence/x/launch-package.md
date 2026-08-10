@@ -1,5 +1,12 @@
 # X Launch Package
 
+## Approved launch assets
+
+- `public/manufacturer-intelligence/social/x-launch-collage.png` — primary 16:9 launch visual combining Overview, Review, and Publication simulation.
+- `public/manufacturer-intelligence/control-center-overview.png` — optional second image when the full dashboard needs to remain readable.
+
+Both assets show synthetic data only. Keep the `Private Beta` and `Synthetic data preview` labels visible; do not crop them out.
+
 ## Primary post
 
 Manufacturer Intelligence now has a Control Center.
