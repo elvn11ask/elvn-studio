@@ -4,8 +4,8 @@ import { ProductCTA, ProductHero, ProductSchema } from "@/components/revenueos/p
 import { aiCapabilities, implementationSteps, integrations, lifecycle, modules, pricing, revenueOS } from "@/lib/revenueos";
 
 export const metadata: Metadata = {
-  title: "Revenue Operations for Industrial Distribution",
-  description: "Track every industrial RFQ from product page through sourcing, quote, order, paid revenue, and margin in one auditable workflow.",
+  title: "Revenue Intelligence for Complex B2B Catalogs",
+  description: "Find where catalog data, product visibility, and technical representation are preventing industrial products from being discovered and sold.",
   alternates: { canonical: "/revenueos" },
   openGraph: { title: "ELVN Revenue Operations", description: revenueOS.tagline, url: "/revenueos", images: [{ url: "/revenueos/og.png", width: 1200, height: 630, alt: "ELVN Revenue Operations — from RFQ to paid revenue" }] },
   twitter: { card: "summary_large_image", title: "ELVN Revenue Operations", description: revenueOS.tagline, images: ["/revenueos/og.png"] },
@@ -14,7 +14,9 @@ export const metadata: Metadata = {
 export default function RevenueOSPage() {
   const integrationGroups = [...new Set(integrations.map((item) => item.group))];
   return <>
-    <ProductHero eyebrow="Revenue Operations Platform for Industrial Distribution" title="Revenue operations for RFQ-driven industrial sales." lede="Track every opportunity from product page to quote, order, paid revenue, and margin—without forcing a generic CRM to model supplier sourcing and technical product identity." />
+    <ProductHero eyebrow="Revenue intelligence for complex B2B catalogs" title="Find where your catalog is losing visibility." lede="Revenue OS checks whether the products you sell can actually be found, indexed, and understood online—then gives catalog, web, and SEO teams an evidence-backed fix queue." />
+
+    <section className="section shell studio-product-feature"><div><p className="eyebrow">Working commercial module</p><h2>Catalog Guard</h2><p>Run bounded, read-only checks across public product pages. Detect HTTP, sitemap, indexability, canonical, title, H1, Product schema, and response-time risks without submitting forms or changing production.</p></div><div className="studio-product-flow"><span>Catalog</span><span>Sitemap</span><span>Product page</span><span>Evidence</span><span>Severity</span><strong>Fix queue</strong></div><div className="button-row"><Link className="button" href="/revenueos/catalog-guard">Run Revenue Audit <span aria-hidden="true">↗</span></Link><Link className="button-quiet" href="/revenueos/validation">See measured validation</Link></div></section>
 
     <section className="product-flow" aria-labelledby="flow-title"><div className="shell"><div className="section-heading"><div><p className="eyebrow">RFQ to revenue</p><h2 id="flow-title">One commercial identity across the entire lifecycle.</h2></div><p>Each handoff produces an auditable event. Delivery, ownership, supplier cost, quote revisions, and payment no longer disappear between systems.</p></div><ol>{lifecycle.map((item, index) => <li key={item}><span>{String(index + 1).padStart(2, "0")}</span><strong>{item}</strong></li>)}</ol></div></section>
 

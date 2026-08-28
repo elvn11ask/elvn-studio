@@ -31,6 +31,8 @@ export const revenueOSRoutes = [
 
 export const revenueOSNavigation = [
   ["Overview", "/revenueos"],
+  ["Catalog Guard", "/revenueos/catalog-guard"],
+  ["Validation", "/revenueos/validation"],
   ["Modules", "/revenueos/modules"],
   ["Knowledge Graph", "/revenueos/knowledge-graph"],
   ["Integrations", "/revenueos/integrations"],

@@ -32,6 +32,8 @@ export const staticRoutes = [
   "/privacy",
   "/search",
   "/revenueos",
+  "/revenueos/catalog-guard",
+  "/revenueos/validation",
   "/revenueos/modules",
   "/revenueos/integrations",
   "/revenueos/ai",
