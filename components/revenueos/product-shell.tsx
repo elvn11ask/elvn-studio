@@ -9,8 +9,8 @@ export function ProductNav() {
   </nav>;
 }
 
-export function ProductHero({ eyebrow, title, lede, actions = true }: { eyebrow: string; title: string; lede: string; actions?: boolean }) {
-  return <><ProductNav /><section className="product-hero shell"><p className="eyebrow">{eyebrow}</p><h1>{title}</h1><p className="product-lede">{lede}</p>{actions && <div className="button-row"><Link className="button" href="/revenueos/implementation#assessment">{revenueOS.assessmentCta} <span aria-hidden="true">↗</span></Link><Link className="button-quiet" href="/revenueos/modules">View the system architecture</Link></div>}<p className="product-status"><span className="status-dot" /> {revenueOS.status} · Selected engagements</p></section></>;
+export function ProductHero({ eyebrow, title, lede, actions = true, status = true }: { eyebrow: string; title: string; lede: string; actions?: boolean; status?: boolean }) {
+  return <><ProductNav /><section className="product-hero shell"><p className="eyebrow">{eyebrow}</p><h1>{title}</h1><p className="product-lede">{lede}</p>{actions && <div className="button-row"><Link className="button" href="/revenueos/implementation#assessment">{revenueOS.assessmentCta} <span aria-hidden="true">↗</span></Link><Link className="button-quiet" href="/revenueos/modules">View the system architecture</Link></div>}{status && <p className="product-status"><span className="status-dot" /> {revenueOS.status} · Selected engagements</p>}</section></>;
 }
 
 export function ProductCTA({ title = "Start with the commercial workflow, not a software demo." }: { title?: string }) {

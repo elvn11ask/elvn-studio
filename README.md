@@ -12,6 +12,7 @@ Production portfolio and commercial site for the independent ELVN Studio practic
 - Signed contact submissions, origin checks, length limits, honeypot, rate limiting, and safe test mode
 - Consent-first analytics preparation; analytics remain disabled until configured
 - Revenue Operations product area with the Revenue Knowledge Graph design-partner module, public architecture, use cases, security, AI controls, pricing, FAQ, and launch package
+- [Manufacturer Intelligence](https://studio.elvn.monster/revenueos/manufacturer-intelligence), a Production Patch Preview available through selected implementation engagements
 - Standalone Next.js container, isolated Nginx configuration, health check, and rollback-oriented release structure
 
 ## Architecture

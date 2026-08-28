@@ -51,5 +51,8 @@ export const staticRoutes = [
   "/revenueos/knowledge-graph/security",
   "/revenueos/knowledge-graph/pricing",
   "/revenueos/knowledge-graph/faq",
+  "/revenueos/manufacturer-intelligence",
+  "/news",
   "/news/revenue-knowledge-graph",
+  "/news/manufacturer-intelligence",
 ] as const;

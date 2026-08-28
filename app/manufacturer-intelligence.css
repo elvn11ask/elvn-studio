@@ -1,0 +1,43 @@
+.manufacturer-actions {
+  padding-bottom: 85px;
+}
+
+.manufacturer-actions .product-status {
+  margin-top: 28px;
+}
+
+.manufacturer-actions + .section {
+  padding-top: 0;
+}
+
+.manufacturer-actions + .section + .product-flow ol {
+  grid-template-columns: repeat(6, 1fr);
+}
+
+.manufacturer-price-factors {
+  max-width: 840px;
+  margin-top: 42px;
+  padding: 28px;
+  border: 1px solid var(--line);
+}
+
+.manufacturer-price-factors ul {
+  columns: 2;
+  padding-left: 20px;
+}
+
+@media (max-width: 900px) {
+  .manufacturer-actions + .section + .product-flow ol {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .manufacturer-actions + .section + .product-flow ol {
+    grid-template-columns: 1fr;
+  }
+
+  .manufacturer-price-factors ul {
+    columns: 1;
+  }
+}
