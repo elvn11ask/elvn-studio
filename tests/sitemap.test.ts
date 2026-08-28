@@ -7,11 +7,13 @@ describe("sitemap", () => {
     const routes = entries.map(({ url }) => url);
     expect(routes).toContain("https://studio.elvn.monster/work/chipfasteners");
     expect(routes).toContain("https://studio.elvn.monster/revenueos");
+    expect(routes).toContain("https://studio.elvn.monster/revenueos/audit");
     expect(routes).toContain("https://studio.elvn.monster/revenueos/implementation");
     expect(routes).toContain("https://studio.elvn.monster/revenueos/knowledge-graph");
     expect(routes).toContain("https://studio.elvn.monster/revenueos/knowledge-graph/faq");
     expect(routes).toContain("https://studio.elvn.monster/news");
     expect(routes).toContain("https://studio.elvn.monster/news/revenue-knowledge-graph");
+    expect(routes).toContain("https://studio.elvn.monster/news/revenueos-private-beta");
     expect(new Set(routes).size).toBe(routes.length);
     expect(entries.every(({ lastModified }) => lastModified instanceof Date)).toBe(true);
     expect(new Date(entries[0].lastModified!).toISOString()).toBe("2026-08-03T00:00:00.000Z");

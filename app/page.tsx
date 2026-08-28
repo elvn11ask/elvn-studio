@@ -35,9 +35,9 @@ export default function Home() {
       <section className="proof-strip"><div className="shell proof-grid"><span>Direct senior communication</span><span>Architecture before excess</span><span>Measured production work</span><span>Rollback included</span></div></section>
 
       <section className="section shell studio-product-feature">
-        <div><p className="eyebrow">Private Implementation Program</p><h2>ELVN Revenue Operations</h2><p>Revenue operations infrastructure for RFQ-driven industrial sales. Connect product discovery, delivery, ownership, supplier sourcing, cost, quote, order, payment, revenue, and margin without replacing every working CRM or ERP.</p></div>
-        <div className="studio-product-flow"><span>Product page</span><span>RFQ</span><span>Supplier</span><span>Quote</span><span>Payment</span><strong>Margin</strong></div>
-        <div className="button-row"><Link className="button" href="/revenueos">Explore Revenue Operations <span aria-hidden="true">↗</span></Link><Link className="button-quiet" href="/revenueos/manufacturer-intelligence">Manufacturer Intelligence preview</Link></div>
+        <div><p className="eyebrow">Revenue OS · Private beta</p><h2>Know what changed on a commercial website before the customer notices.</h2><p>Website Guard runs bounded, read-only checks, groups regressions into an issue queue and verifies fixes. Catalog Guard adds product identity and source-to-site coverage for complex catalogs.</p></div>
+        <div className="studio-product-flow"><span>Authorized URLs</span><span>Bounded scan</span><span>Page inventory</span><span>Grouped issues</span><span>Evidence</span><strong>Verify fix</strong></div>
+        <div className="button-row"><Link className="button" href="/revenueos">Explore Revenue OS <span aria-hidden="true">↗</span></Link><Link className="button-quiet" href="/revenueos/audit">Revenue Audit from $750</Link></div>
       </section>
 
       <section className="section shell">

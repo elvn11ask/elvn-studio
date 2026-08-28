@@ -11,9 +11,9 @@ export function RevenueAssessmentForm(){
   useEffect(()=>{startedAt.current=Date.now();fetch("/api/contact/token",{cache:"no-store"}).then((response)=>response.json()).then((data)=>setToken(data.token)).catch(()=>setStatus({kind:"error",message:"The secure assessment form could not start. Please use email instead."}))},[]);
   async function submit(event:React.FormEvent<HTMLFormElement>){
     event.preventDefault();setStatus({kind:"sending"});
-    const form=new FormData(event.currentTarget);const payload:Record<string,unknown>=Object.fromEntries(form.entries());
+    const formElement=event.currentTarget;const form=new FormData(formElement);const payload:Record<string,unknown>=Object.fromEntries(form.entries());
     payload.consent=form.get("consent")==="on";payload.token=token;payload.startedAt=startedAt.current;
-    try{const response=await fetch("/api/revenueos-assessment",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify(payload)});const result=await response.json();setStatus({kind:response.ok?"success":"error",message:result.message,leadId:result.leadId});if(response.ok)event.currentTarget.reset()}catch{setStatus({kind:"error",message:"The form could not connect. Please email elvnask@gmail.com."})}
+    try{const response=await fetch("/api/revenueos-assessment",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify(payload)});const result=await response.json();setStatus({kind:response.ok?"success":"error",message:result.message,leadId:result.leadId});if(response.ok)formElement.reset()}catch{setStatus({kind:"error",message:"The form could not connect. Please email elvnask@gmail.com."})}
   }
   if(status.kind==="success")return <div className="form-state success" role="status"><p className="eyebrow">Assessment request received</p><h2>Your commercial workflow now has a reference.</h2><p>{status.message}</p>{status.leadId&&<small>Lead reference: {status.leadId}</small>}<button className="button-quiet" onClick={()=>{startedAt.current=Date.now();setStatus({kind:"idle"})}}>Send another request</button></div>;
   return <form className="contact-form assessment-form" onSubmit={submit} noValidate>

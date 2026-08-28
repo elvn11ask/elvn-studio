@@ -32,6 +32,7 @@ export const staticRoutes = [
   "/privacy",
   "/search",
   "/revenueos",
+  "/revenueos/audit",
   "/revenueos/website-guard",
   "/revenueos/catalog-guard",
   "/revenueos/migration-guard",
@@ -58,4 +59,5 @@ export const staticRoutes = [
   "/news",
   "/news/revenue-knowledge-graph",
   "/news/manufacturer-intelligence",
+  "/news/revenueos-private-beta",
 ] as const;
