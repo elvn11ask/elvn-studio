@@ -4,14 +4,16 @@ import { ProductHero, ProductSchema } from "@/components/revenueos/product-shell
 import { catalogGuardEnvironments, catalogGuardValidation } from "@/lib/catalog-guard";
 
 export const metadata: Metadata = {
-  title: "Catalog Guard Validation Dashboard",
-  description: "Public-safe Catalog Guard engineering validation across ICPROM, ChipFasteners, and ARMSENS.",
+  title: "Revenue OS Validation Dashboard",
+  description: "Public-safe Website Guard and Catalog Guard engineering validation across five production environments.",
   alternates: { canonical: "/revenueos/validation" },
 };
 
 export default function ValidationPage() {
   return <>
-    <ProductHero eyebrow={`Validation dashboard · ${catalogGuardValidation.measuredAt} · ${catalogGuardValidation.measuredAtUtc}`} title="Three production environments. One bounded, reproducible scan method." lede="Catalog Guard checked public product pages from ICPROM, ChipFasteners, and ARMSENS using sequential read-only requests and a fixed 25-page limit per environment." actions={false} />
+    <ProductHero eyebrow={`Validation dashboard · ${catalogGuardValidation.measuredAt}`} title="Five environments. Ninety-five pages. One bounded evidence model." lede="Catalog Guard checked 75 industrial product pages. Website Guard then ran without catalog data on 20 pages across ELVN Studio and PeterhofApart. All requests were sequential, read-only and bounded." actions={false} />
+
+    <section className="section shell"><div className="ros-proof"><article><strong>95</strong><span>public pages</span></article><article><strong>5</strong><span>environments</span></article><article><strong>0</strong><span>request errors</span></article><article><strong>0</strong><span>writes or forms</span></article></div></section>
 
     <section className="section shell"><div className="pricing-preview"><article><h3>Production environments</h3><strong>{catalogGuardValidation.environments}</strong><span>{catalogGuardEnvironments.map((item) => item.name).join(" · ")}</span><p>Internal engineering validation, not paying-customer logos</p></article><article><h3>Product pages checked</h3><strong>{catalogGuardValidation.pages}</strong><span>25 per environment</span><p>{catalogGuardValidation.requestErrors} request errors · HTTP 200 throughout the sample</p></article><article><h3>Checks executed</h3><strong>{catalogGuardValidation.canonicalChecks + catalogGuardValidation.schemaChecks}</strong><span>Canonical + Product schema</span><p>{catalogGuardValidation.publicWrites} production writes</p></article><article><h3>Issues detected</h3><strong>{catalogGuardValidation.issues}</strong><span>{catalogGuardValidation.issueClass}</span><p>Revenue impact: unquantified</p></article></div></section>
 
@@ -19,7 +21,9 @@ export default function ValidationPage() {
 
     <section className="section shell"><div className="section-heading"><div><p className="eyebrow">Environment results</p><h2>Same boundary, independently measured.</h2></div><p>Each result is a truncated sample from a public product sitemap, not a whole-catalog coverage claim. Latency is a point-in-time observation, not an SLA.</p></div><div className="module-preview">{catalogGuardEnvironments.map((item, index) => <article key={item.name}><span>{String(index + 1).padStart(2, "0")}</span><h3>{item.name}</h3><p>{item.pages} PDPs · {item.pages - item.errors} HTTP 200 · {item.errors} request errors · {item.issues} Product schema issues · P50 {item.p50} ms · P95 {item.p95} ms</p></article>)}</div></section>
 
+    <section className="section section-contrast"><div className="shell"><div className="section-heading"><div><p className="eyebrow">Universality check</p><h2>Catalog data was optional.</h2></div><p>The generic profile did not force Product schema or MPN assumptions onto non-catalog pages.</p></div><div className="ros-module-grid"><article><span>NEXT.JS · 10 PAGES</span><h3>ELVN Studio</h3><p>10 successful responses, 0 request errors, 0 bounded findings, P95 481.93 ms.</p></article><article><span>COMMERCIAL SITE · 10 PAGES</span><h3>PeterhofApart</h3><p>10 successful responses, 0 request errors, 0 bounded findings, P95 626.53 ms.</p></article><article><span>LIMITATION</span><h3>Server-observable pass</h3><p>Rendered DOM, mobile, screenshots, forms and Core Web Vitals were not part of this cohort.</p></article></div></div></section>
+
     <section className="section product-evidence"><div className="shell content-grid"><aside><p className="eyebrow">Disclosure</p><h2>What we are not claiming</h2></aside><div className="prose"><p>These companies are validation environments operated within the same product engineering portfolio. They are not presented as paying Revenue OS customers, independent endorsements, or a representative market benchmark.</p><p>No forms were submitted. No private infrastructure or business data was inspected. No AI diagnosis or revenue estimate was used to produce the issue count.</p><p><Link className="button" href="/revenueos/catalog-guard">Review the $1,500 audit <span aria-hidden="true">↗</span></Link></p></div></div></section>
-    <ProductSchema path="/revenueos/validation" name="Catalog Guard Production Validation" description="Bounded public-safe validation across three industrial catalog production environments." />
+    <ProductSchema path="/revenueos/validation" name="Revenue OS Production Validation" description="Bounded public-safe validation across five production environments and 95 pages." />
   </>;
 }

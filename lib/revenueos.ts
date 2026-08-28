@@ -1,10 +1,10 @@
 export const revenueOS = {
-  name: "ELVN Revenue Operations",
-  workingName: "RevenueOS AI",
-  category: "Revenue Operations Platform for Industrial Distribution",
-  tagline: "Track every RFQ from product page to quote, order, revenue, and margin.",
-  status: "Private Implementation Program",
-  assessmentCta: "Request a Revenue Operations Assessment",
+  name: "Revenue OS",
+  workingName: "Revenue OS",
+  category: "Website and Catalog Intelligence Platform",
+  tagline: "Detect website regressions, work the issue queue, and verify fixes.",
+  status: "Private Beta",
+  assessmentCta: "Request a bounded audit",
 } as const;
 
 export const revenueOSRoutes = [

@@ -1,0 +1,22 @@
+.product-hero.compact {
+  padding-block: 80px;
+}
+
+.product-hero.compact h1 {
+  max-width: 1120px;
+  font-size: clamp(54px, 7vw, 102px);
+}
+
+.ros-workspace-section {
+  padding-top: 65px;
+}
+
+@media (max-width: 560px) {
+  .product-hero.compact {
+    padding-block: 58px 70px;
+  }
+
+  .product-hero.compact h1 {
+    font-size: 48px;
+  }
+}
