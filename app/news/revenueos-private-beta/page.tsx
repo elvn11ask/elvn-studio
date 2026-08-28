@@ -6,6 +6,19 @@ export const metadata: Metadata = {
   title: "Revenue OS enters private beta",
   description: "Website Guard, Catalog Guard and a bounded engineering validation across 95 public pages and five first-party environments.",
   alternates: { canonical: "/news/revenueos-private-beta" },
+  openGraph: {
+    title: "Revenue OS enters private beta",
+    description: "Website Guard, Catalog Guard and bounded engineering validation across 95 public pages.",
+    url: "/news/revenueos-private-beta",
+    type: "article",
+    images: ["/revenueos/og.png"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Revenue OS enters private beta",
+    description: "Website Guard, Catalog Guard and bounded engineering validation across 95 public pages.",
+    images: ["/revenueos/og.png"],
+  },
 };
 
 export default function RevenueOSPrivateBetaNews() {
