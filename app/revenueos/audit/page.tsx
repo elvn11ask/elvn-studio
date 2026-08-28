@@ -6,6 +6,19 @@ export const metadata: Metadata = {
   title: "Revenue Audit — Website & Catalog Risk",
   description: "Request a bounded, read-only Website Revenue Risk Audit or Catalog Revenue Leak Audit from ELVN Studio.",
   alternates: { canonical: "/revenueos/audit" },
+  openGraph: {
+    title: "Revenue Audit — Website & Catalog Risk",
+    description: "Request a bounded, read-only Website Revenue Risk Audit or Catalog Revenue Leak Audit from ELVN Studio.",
+    url: "/revenueos/audit",
+    type: "website",
+    images: ["/revenueos/og.png"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Revenue Audit — Website & Catalog Risk",
+    description: "Bounded, read-only website and catalog risk audits from ELVN Studio.",
+    images: ["/revenueos/og.png"],
+  },
 };
 
 const questions = [

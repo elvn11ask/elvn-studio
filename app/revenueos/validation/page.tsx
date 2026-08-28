@@ -7,6 +7,19 @@ export const metadata: Metadata = {
   title: "Revenue OS Validation Dashboard",
   description: "Public-safe Website Guard and Catalog Guard engineering validation across five production environments.",
   alternates: { canonical: "/revenueos/validation" },
+  openGraph: {
+    title: "Revenue OS Validation Dashboard",
+    description: "Engineering validation across 95 public pages and five first-party environments.",
+    url: "/revenueos/validation",
+    type: "website",
+    images: ["/revenueos/og.png"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Revenue OS Validation Dashboard",
+    description: "Engineering validation across 95 public pages and five first-party environments.",
+    images: ["/revenueos/og.png"],
+  },
 };
 
 export default function ValidationPage() {

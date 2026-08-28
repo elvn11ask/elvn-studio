@@ -6,6 +6,19 @@ export const metadata: Metadata = {
   title: "Revenue OS — Website & Catalog Intelligence",
   description: "Detect website regressions, work an evidence-backed issue queue, and verify fixes. Specialized catalog intelligence for complex product sites.",
   alternates: { canonical: "/revenueos" },
+  openGraph: {
+    title: "Revenue OS — Website & Catalog Intelligence",
+    description: "Detect website regressions, work an evidence-backed issue queue, and verify fixes.",
+    url: "/revenueos",
+    type: "website",
+    images: ["/revenueos/og.png"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Revenue OS — Website & Catalog Intelligence",
+    description: "Detect website regressions, work an evidence-backed issue queue, and verify fixes.",
+    images: ["/revenueos/og.png"],
+  },
 };
 
 const checks = ["HTTP", "Redirects", "Indexability", "Canonical", "Titles", "Descriptions", "H1", "Structured data", "Internal links", "Latency"];

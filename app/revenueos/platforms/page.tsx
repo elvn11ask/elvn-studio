@@ -1,7 +1,24 @@
 import type { Metadata } from "next";
 import { ProductHero, ProductSchema } from "@/components/revenueos/product-shell";
 
-export const metadata: Metadata = { title: "Revenue OS Platform Support", description: "How Revenue OS checks custom, modern, legacy, server-rendered, static and client-rendered websites.", alternates: { canonical: "/revenueos/platforms" } };
+export const metadata: Metadata = {
+  title: "Revenue OS Platform Support",
+  description: "How Revenue OS checks custom, modern, legacy, server-rendered, static and client-rendered websites.",
+  alternates: { canonical: "/revenueos/platforms" },
+  openGraph: {
+    title: "Revenue OS Platform Support",
+    description: "Protocol-first support and explicit limitations across modern and legacy web stacks.",
+    url: "/revenueos/platforms",
+    type: "website",
+    images: ["/revenueos/og.png"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Revenue OS Platform Support",
+    description: "Protocol-first support and explicit limitations across modern and legacy web stacks.",
+    images: ["/revenueos/og.png"],
+  },
+};
 
 const rows = [["Validated", "Next.js; custom server-rendered catalog sites; non-catalog commercial site", "Bounded production evidence exists."], ["Protocol-compatible", "PHP, Java server apps, static HTML, WordPress, WooCommerce, Shopify, Webflow, Framer, Tilda", "Basic HTTP/HTML checks do not require a framework connector; platform-specific validation is still required."], ["Client-rendered JavaScript", "React/Vue/SPA application shells", "HTTP facts work now. Full rendered-DOM, mobile and visual checks require the optional browser adapter, currently under validation."], ["Private or authenticated", "Intranets, customer portals, staging behind login", "Not scanned by the public worker. Requires explicit authorization and a separately configured execution boundary."]];
 
