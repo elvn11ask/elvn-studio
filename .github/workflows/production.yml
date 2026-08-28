@@ -54,6 +54,18 @@ jobs:
           done
           printf '\n[sudo-policy]\n'
           sudo -n -l 2>&1 || true
+          printf '\n[operator-scripts]\n'
+          for script in /usr/local/sbin/elvn-deploy /usr/local/sbin/elvn-rollback /usr/local/sbin/elvn-studio-deploy; do
+            if [ -r "$script" ]; then
+              ls -l "$script"
+              sha256sum "$script"
+              sed -n '1,320p' "$script"
+            else
+              printf '%s=UNREADABLE_OR_ABSENT\n' "$script"
+            fi
+          done
+          printf '\n[srv-layout]\n'
+          find /srv -maxdepth 3 -mindepth 1 -printf '%M %u:%g %p\n' 2>/dev/null | sort || true
           printf '\n[docker-ps]\n'
           docker ps --format '{{json .}}' 2>&1 || printf 'DIRECT_DOCKER_UNAVAILABLE\n'
           sudo -n /usr/bin/docker ps --format '{{json .}}' 2>&1 || printf 'SUDO_DOCKER_UNAVAILABLE\n'
