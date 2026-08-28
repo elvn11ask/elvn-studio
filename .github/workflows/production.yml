@@ -52,14 +52,17 @@ jobs:
           for path in /srv/elvn-control-center /srv/control-center; do
             if [ -d "$path" ]; then find "$path" -maxdepth 2 -mindepth 1 -printf '%M %u:%g %p\n' 2>/dev/null | sort; else printf '%s=ABSENT\n' "$path"; fi
           done
+          printf '\n[sudo-policy]\n'
+          sudo -n -l 2>&1 || true
           printf '\n[docker-ps]\n'
-          docker ps --format '{{json .}}'
+          docker ps --format '{{json .}}' 2>&1 || printf 'DIRECT_DOCKER_UNAVAILABLE\n'
+          sudo -n /usr/bin/docker ps --format '{{json .}}' 2>&1 || printf 'SUDO_DOCKER_UNAVAILABLE\n'
           printf '\n[docker-inspect]\n'
-          for container in $(docker ps --format '{{.Names}}'); do
+          for container in $(docker ps --format '{{.Names}}' 2>/dev/null || true); do
             docker inspect --format '{{json .Name}} {{json .Config.Image}} {{json .Image}} {{json .State.Status}} {{json .State.Health.Status}} {{json .HostConfig.RestartPolicy.Name}} {{json .Mounts}}' "$container" 2>/dev/null || true
           done
           printf '\n[docker-volumes]\n'
-          docker volume ls --format '{{json .}}'
+          docker volume ls --format '{{json .}}' 2>&1 || printf 'DIRECT_DOCKER_UNAVAILABLE\n'
           printf '\n[nginx-process]\n'
           ps -eo user,pid,comm,args | grep '[n]ginx' || true
           REMOTE
