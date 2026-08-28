@@ -4,6 +4,8 @@ import path from "node:path";
 import { DatabaseSync } from "node:sqlite";
 import type { RevenueAssessment } from "@/lib/revenueos-assessment";
 import { buildRevenueAssessmentBrief } from "@/lib/revenueos-assessment";
+import type { RevenueAuditRequest } from "@/lib/revenueos-audit";
+import { buildRevenueAuditBrief } from "@/lib/revenueos-audit";
 import { buildStudioAssessmentGraphEvent } from "@/lib/revenue-graph";
 
 type PersistResult = {
@@ -57,6 +59,10 @@ export function assessmentIdempotencyKey(data: RevenueAssessment) {
   return hmac(["studio-assessment-v2", data.token, data.startedAt, data.email.trim().toLowerCase(), data.company.trim().toLowerCase()].join("|"));
 }
 
+export function auditIdempotencyKey(data: RevenueAuditRequest) {
+  return hmac(["studio-revenue-audit-v1", data.token, data.startedAt, data.email.trim().toLowerCase(), data.company.trim().toLowerCase()].join("|"));
+}
+
 export function assessmentTrackingToken(leadId: string) {
   return hmac(`studio-assessment-status|${leadId}`);
 }
@@ -100,6 +106,30 @@ function outboxPlan(data: RevenueAssessment, leadId: string): OutboxPlan[] {
   return plan;
 }
 
+function auditOutboxPlan(data: RevenueAuditRequest, leadId: string): OutboxPlan[] {
+  const brief = buildRevenueAuditBrief(data, leadId);
+  const plan: OutboxPlan[] = [
+    {
+      channel: "email",
+      destination: process.env.CONTACT_RECIPIENT || "elvnask@gmail.com",
+      template: "revenue_audit_internal",
+      payload: { subject: `Revenue Audit Request — ${data.company} — ${leadId}`, text: brief, replyTo: data.email },
+    },
+    {
+      channel: "email",
+      destination: data.email,
+      template: "revenue_audit_confirmation",
+      payload: {
+        subject: `ELVN Studio received your Revenue Audit request — ${leadId}`,
+        text: `Hello ${data.name},\n\nELVN Studio received your Revenue Audit request. The reference is ${leadId}.\n\nWe will review the public website boundary, approximate page volume, and your main concern before confirming scope. No changes will be made to your site.\n\nELVN Studio\nelvnask@gmail.com`,
+        replyTo: "elvnask@gmail.com",
+      },
+    },
+  ];
+  if (process.env.TELEGRAM_BOT_TOKEN && process.env.TELEGRAM_CHAT_ID) plan.push({ channel: "telegram", destination: process.env.TELEGRAM_CHAT_ID, template: "revenue_audit_internal", payload: { text: `New Revenue Audit request\n\n${brief}`.slice(0, 3900) } });
+  return plan;
+}
+
 export function persistAssessment(data: RevenueAssessment, candidateLeadId: string): PersistResult {
   const db = database();
   const idempotencyKey = assessmentIdempotencyKey(data);
@@ -137,6 +167,54 @@ export function persistAssessment(data: RevenueAssessment, candidateLeadId: stri
     for (const [eventType, eventPayload] of [
       ["assessment_started", { startedAt: new Date(data.startedAt).toISOString() }],
       ["assessment_submitted", {}],
+      ["validation_passed", {}],
+      ["lead_id_created", {}],
+      ["lead_persisted", {}],
+      ["crm_recorded", { storage: "studio_internal" }],
+      ["owner_assigned", { ownerId, ownerName }],
+      ["sla_started", { dueAt: slaDueAt, minutes: slaMinutes }],
+    ] as const) event.run(randomId("EVT"), candidateLeadId, eventType, "ok", JSON.stringify(eventPayload), createdAt);
+
+    const outbox = db.prepare(`INSERT INTO studio_outbox
+      (outbox_id,dedupe_key,lead_id,channel,destination,template,payload_json,status,attempts,available_at,created_at,updated_at)
+      VALUES (?,?,?,?,?,?,?,'queued',0,?,?,?)`);
+    for (const item of plans) outbox.run(randomId("OUT"), `${candidateLeadId}:${item.channel}:${item.template}`, candidateLeadId, item.channel, item.destination, item.template, JSON.stringify(item.payload), createdAt, createdAt, createdAt);
+    event.run(randomId("EVT"), candidateLeadId, "outbox_created", "ok", JSON.stringify({ count: plans.length, channels: plans.map(({ channel }) => channel) }), createdAt);
+    db.exec("COMMIT");
+  } catch (error) {
+    db.exec("ROLLBACK");
+    const raced = db.prepare("SELECT lead_id FROM studio_leads WHERE idempotency_key = ?").get(idempotencyKey) as { lead_id: string } | undefined;
+    if (raced) return { leadId: raced.lead_id, duplicate: true, trackingToken: assessmentTrackingToken(raced.lead_id), deliveryStatus: "queued" };
+    throw error;
+  }
+
+  return { leadId: candidateLeadId, duplicate: false, trackingToken: assessmentTrackingToken(candidateLeadId), deliveryStatus: "queued" };
+}
+
+export function persistAudit(data: RevenueAuditRequest, candidateLeadId: string): PersistResult {
+  const db = database();
+  const idempotencyKey = auditIdempotencyKey(data);
+  const existing = db.prepare("SELECT lead_id FROM studio_leads WHERE idempotency_key = ?").get(idempotencyKey) as { lead_id: string } | undefined;
+  if (existing) return { leadId: existing.lead_id, duplicate: true, trackingToken: assessmentTrackingToken(existing.lead_id), deliveryStatus: "queued" };
+
+  const createdAt = now();
+  const slaMinutes = Math.max(15, Math.min(1440, Number(process.env.STUDIO_LEAD_SLA_MINUTES || 240)));
+  const slaDueAt = new Date(Date.now() + slaMinutes * 60_000).toISOString();
+  const ownerId = process.env.STUDIO_LEAD_OWNER_ID || "elvn-studio";
+  const ownerName = process.env.STUDIO_LEAD_OWNER_NAME || "ELVN Studio";
+  const payload = JSON.stringify({ siteType: data.siteType, approximatePages: data.approximatePages, mainConcern: data.mainConcern, offer: "revenue_audit" });
+  const plans = auditOutboxPlan(data, candidateLeadId);
+
+  db.exec("BEGIN IMMEDIATE");
+  try {
+    db.prepare(`INSERT INTO studio_leads
+      (lead_id,idempotency_key,form_type,customer_name,customer_email,customer_company,customer_country,company_website,payload_json,consent_at,status,owner_id,owner_name,sla_due_at,created_at,updated_at)
+      VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`).run(candidateLeadId, idempotencyKey, "revenue_risk_audit", data.name, data.email, data.company, "Not provided", data.companyWebsite, payload, createdAt, "new", ownerId, ownerName, slaDueAt, createdAt, createdAt);
+
+    const event = db.prepare("INSERT INTO studio_lead_events (event_id,lead_id,event_type,status,payload_json,created_at) VALUES (?,?,?,?,?,?)");
+    for (const [eventType, eventPayload] of [
+      ["audit_started", { startedAt: new Date(data.startedAt).toISOString() }],
+      ["audit_submitted", {}],
       ["validation_passed", {}],
       ["lead_id_created", {}],
       ["lead_persisted", {}],

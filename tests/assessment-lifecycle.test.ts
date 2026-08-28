@@ -2,8 +2,9 @@ import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
-import { assessmentLifecycleReady, assessmentLifecycleStatus, closeAssessmentLifecycleDatabaseForTests, persistAssessment } from "@/lib/assessment-lifecycle";
+import { assessmentLifecycleReady, assessmentLifecycleStatus, closeAssessmentLifecycleDatabaseForTests, persistAssessment, persistAudit } from "@/lib/assessment-lifecycle";
 import { revenueAssessmentSchema } from "@/lib/revenueos-assessment";
+import { revenueAuditSchema } from "@/lib/revenueos-audit";
 
 let directory = "";
 const assessment = () => revenueAssessmentSchema.parse({
@@ -63,5 +64,13 @@ describe("Studio assessment lifecycle", () => {
     const second = persistAssessment(assessment(), "ROS-20260805-FFFFFFFF");
     expect(second).toMatchObject({ leadId: first.leadId, duplicate: true, trackingToken: first.trackingToken });
     expect(assessmentLifecycleStatus(first.leadId)!.deliveries).toHaveLength(2);
+  });
+
+  it("persists an audit lead and queues isolated test email deliveries", () => {
+    const audit = revenueAuditSchema.parse({ name: "Audit Canary", email: "canary@example.com", company: "ELVN Test", companyWebsite: "https://example.com", siteType: "Website / service business", approximatePages: "51–250", mainConcern: "TEST — verify a bounded website audit without contacting a real recipient.", consent: true, website: "", token: "12345678901234567890123456789012", startedAt: 1_786_000_000_000 });
+    const result = persistAudit(audit, "AUD-20260828-ABCDEF12");
+    const lifecycle = assessmentLifecycleStatus(result.leadId)!;
+    expect(lifecycle.events.map((event) => event.event_type)).toEqual(expect.arrayContaining(["audit_started", "audit_submitted", "outbox_created"]));
+    expect(lifecycle.deliveries).toHaveLength(2);
   });
 });

@@ -4,6 +4,7 @@ import { ProductSchema } from "@/components/revenueos/product-shell";
 import robots from "@/app/robots";
 import { issueContactToken } from "@/lib/contact";
 import { assessmentTimingValid, buildRevenueAssessmentBrief, revenueAssessmentSchema } from "@/lib/revenueos-assessment";
+import { auditTimingValid, buildRevenueAuditBrief, revenueAuditSchema } from "@/lib/revenueos-audit";
 import { faqs, integrations, modules, pricing, revenueOSRoutes } from "@/lib/revenueos";
 
 const validAssessment = {
@@ -61,6 +62,13 @@ describe("Revenue Operations product area", () => {
     expect(brief).toContain("Deployment: Customer private cloud");
   });
 
+  it("validates the bounded Revenue Audit request and builds a concise proof-safe brief", () => {
+    const parsed = revenueAuditSchema.parse({ name: "Audit Owner", email: "owner@example.com", company: "Example Co", companyWebsite: "https://example.com", siteType: "B2B or industrial catalog", approximatePages: "251–1,000", mainConcern: "We cannot verify whether catalog and public product pages still match.", consent: true, website: "", token: issueContactToken(), startedAt: Date.now() - 5000 });
+    expect(auditTimingValid(parsed.startedAt)).toBe(true);
+    expect(buildRevenueAuditBrief(parsed, "AUD-TEST")).toContain("Approximate pages or SKUs: 251–1,000");
+    expect(revenueAuditSchema.safeParse({ ...parsed, website: "spam" }).success).toBe(false);
+  });
+
   it("renders valid Service, Breadcrumb, and FAQ structured data", () => {
     const markup = renderToStaticMarkup(<ProductSchema path="/revenueos/faq" name="RevenueOS FAQ" description="Answers" faq={faqs} />);
     expect(markup).toContain("FAQPage");
@@ -72,5 +80,6 @@ describe("Revenue Operations product area", () => {
     const config = robots();
     expect(config.rules).toEqual(expect.arrayContaining([expect.objectContaining({ allow: "/" })]));
     expect(JSON.stringify(config.rules)).toContain("/api/revenueos-assessment");
+    expect(JSON.stringify(config.rules)).toContain("/api/revenueos-audit");
   });
 });

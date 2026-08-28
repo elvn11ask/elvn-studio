@@ -1,6 +1,15 @@
 name: Production
 on:
   workflow_dispatch:
+    inputs:
+      mode:
+        description: "Operator action"
+        required: true
+        default: deploy
+        type: choice
+        options:
+          - deploy
+          - inventory
   push:
     branches: [main]
 permissions:
@@ -9,7 +18,76 @@ concurrency:
   group: elvn-studio-production
   cancel-in-progress: false
 jobs:
+  inventory:
+    if: github.event_name == 'workflow_dispatch' && inputs.mode == 'inventory'
+    environment: production
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Configure SSH
+        env:
+          VPS_KNOWN_HOSTS: ${{ secrets.VPS_KNOWN_HOSTS }}
+          VPS_SSH_KEY: ${{ secrets.VPS_SSH_KEY }}
+        run: |
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$VPS_KNOWN_HOSTS" > ~/.ssh/known_hosts
+          printf '%s\n' "$VPS_SSH_KEY" > ~/.ssh/studio_deploy
+          chmod 600 ~/.ssh/known_hosts ~/.ssh/studio_deploy
+      - name: Collect read-only production inventory
+        env:
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+          VPS_PORT: ${{ secrets.VPS_PORT }}
+          VPS_USER: ${{ secrets.VPS_USER }}
+        run: |
+          ssh -p "$VPS_PORT" -i ~/.ssh/studio_deploy "$VPS_USER@$VPS_HOST" 'sh -s' > production-inventory.txt <<'REMOTE'
+          set -eu
+          printf 'captured_at=%s\n' "$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          printf 'operator_user=%s\n' "$(id -un)"
+          printf 'hostname=%s\n' "$(hostname)"
+          printf '\n[studio-release]\n'
+          for path in /srv/elvn-studio/DEPLOYED_COMMIT /srv/elvn-studio/current /srv/elvn-studio/previous; do
+            if [ -L "$path" ]; then printf '%s -> %s\n' "$path" "$(readlink -f "$path")"; elif [ -r "$path" ]; then printf '%s=%s\n' "$path" "$(sed -n '1p' "$path")"; else printf '%s=UNREADABLE_OR_ABSENT\n' "$path"; fi
+          done
+          printf '\n[revenueos-files]\n'
+          for path in /srv/elvn-control-center /srv/control-center; do
+            if [ -d "$path" ]; then find "$path" -maxdepth 2 -mindepth 1 -printf '%M %u:%g %p\n' 2>/dev/null | sort; else printf '%s=ABSENT\n' "$path"; fi
+          done
+          printf '\n[sudo-policy]\n'
+          sudo -n -l 2>&1 || true
+          printf '\n[operator-scripts]\n'
+          for script in /usr/local/sbin/elvn-deploy /usr/local/sbin/elvn-rollback /usr/local/sbin/elvn-studio-deploy; do
+            if [ -r "$script" ]; then
+              ls -l "$script"
+              sha256sum "$script"
+              sed -n '1,320p' "$script"
+            else
+              printf '%s=UNREADABLE_OR_ABSENT\n' "$script"
+            fi
+          done
+          printf '\n[srv-layout]\n'
+          find /srv -maxdepth 3 -mindepth 1 -printf '%M %u:%g %p\n' 2>/dev/null | sort || true
+          printf '\n[docker-ps]\n'
+          docker ps --format '{{json .}}' 2>&1 || printf 'DIRECT_DOCKER_UNAVAILABLE\n'
+          sudo -n /usr/bin/docker ps --format '{{json .}}' 2>&1 || printf 'SUDO_DOCKER_UNAVAILABLE\n'
+          printf '\n[docker-inspect]\n'
+          for container in $(docker ps --format '{{.Names}}' 2>/dev/null || true); do
+            docker inspect --format '{{json .Name}} {{json .Config.Image}} {{json .Image}} {{json .State.Status}} {{json .State.Health.Status}} {{json .HostConfig.RestartPolicy.Name}} {{json .Mounts}}' "$container" 2>/dev/null || true
+          done
+          printf '\n[docker-volumes]\n'
+          docker volume ls --format '{{json .}}' 2>&1 || printf 'DIRECT_DOCKER_UNAVAILABLE\n'
+          printf '\n[nginx-process]\n'
+          ps -eo user,pid,comm,args | grep '[n]ginx' || true
+          REMOTE
+          test -s production-inventory.txt
+      - name: Upload protected inventory artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: production-inventory-${{ github.run_id }}
+          path: production-inventory.txt
+          retention-days: 1
+
   release:
+    if: github.event_name == 'push' || inputs.mode == 'deploy'
     environment: production
     runs-on: ubuntu-latest
     timeout-minutes: 25

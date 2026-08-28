@@ -5,6 +5,7 @@ import { Footer } from "@/components/footer";
 import { AnalyticsMeasurement, ConsentControls, GoogleAnalyticsTag } from "@/components/consent";
 import { site } from "@/lib/site";
 import "./globals.css";
+import "./revenueos-v2.css";
 import "./manufacturer-intelligence.css";
 
 const sans = Geist({ subsets: ["latin"], variable: "--font-sans", display: "swap" });

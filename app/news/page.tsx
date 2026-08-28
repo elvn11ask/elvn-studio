@@ -9,6 +9,12 @@ export const metadata: Metadata = {
 
 const articles = [
   {
+    href: "/news/revenueos-private-beta",
+    date: "August 28, 2026",
+    title: "Revenue OS enters private beta",
+    summary: "Website Guard is now an operational workspace; bounded engineering validation covers 95 public pages across five first-party environments.",
+  },
+  {
     href: "/news/manufacturer-intelligence",
     date: "August 5, 2026",
     title: "Manufacturer Intelligence moves from preview to a RevenueOS production patch",
