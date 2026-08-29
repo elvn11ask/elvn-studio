@@ -2,6 +2,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";
 import { ProductSchema } from "@/components/revenueos/product-shell";
 import robots from "@/app/robots";
+import { GET as getGoogleSitemap } from "@/app/sitemap-google.xml/route";
 import { issueContactToken } from "@/lib/contact";
 import { assessmentTimingValid, buildRevenueAssessmentBrief, revenueAssessmentSchema } from "@/lib/revenueos-assessment";
 import { auditTimingValid, buildRevenueAuditBrief, revenueAuditSchema } from "@/lib/revenueos-audit";
@@ -81,5 +82,21 @@ describe("Revenue Operations product area", () => {
     expect(config.rules).toEqual(expect.arrayContaining([expect.objectContaining({ allow: "/" })]));
     expect(JSON.stringify(config.rules)).toContain("/api/revenueos-assessment");
     expect(JSON.stringify(config.rules)).toContain("/api/revenueos-audit");
+    expect(config.host).toBe("studio.elvn.monster");
+    expect(config.sitemap).toEqual([
+      "https://studio.elvn.monster/sitemap.xml",
+      "https://studio.elvn.monster/sitemap-google.xml",
+    ]);
+  });
+
+  it("publishes an independent Google sitemap response with explicit XML headers", async () => {
+    const response = getGoogleSitemap();
+    const body = await response.text();
+    expect(response.status).toBe(200);
+    expect(response.headers.get("content-type")).toBe("application/xml; charset=utf-8");
+    expect(Number(response.headers.get("content-length"))).toBe(Buffer.byteLength(body));
+    expect(body).toContain('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">');
+    expect(body).toContain("<loc>https://studio.elvn.monster/revenueos</loc>");
+    expect(body).toContain("<lastmod>2026-08-29T00:00:00.000Z</lastmod>");
   });
 });
