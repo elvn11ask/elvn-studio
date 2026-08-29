@@ -1,5 +1,40 @@
 # ELVN Revenue Operations — X launch package
 
+## Production update — August 29, 2026
+
+Drafts only. Do not publish automatically. The validation numbers below are engineering evidence, not customer, ranking, conversion or revenue outcomes.
+
+1. Revenue OS 0.2.0 is live in production. The application, worker, database, backup and release identity are healthy, and the application rollback path was rehearsed new → previous 0.1.0 → new. The next experiment is the first paid customer. https://studio.elvn.monster/news/revenueos-private-beta
+
+   Screenshot: `https://studio.elvn.monster/revenueos/social/2026-08-29/studio-revenueos-desktop.jpg`
+
+2. The public engineering baseline remains deliberately bounded: 95 pages across five first-party environments, zero request errors, zero writes and zero form submissions. These are technical validation facts—not 95 customers or a revenue claim. https://studio.elvn.monster/revenueos/validation
+
+   Screenshot: `https://studio.elvn.monster/revenueos/social/2026-08-29/studio-revenueos-validation-desktop.jpg`
+
+3. Website Guard turns a scan into an operating loop: authorized site → bounded baseline → grouped issue queue → evidence → status → re-scan → verification. No automatic production changes. https://studio.elvn.monster/revenueos/website-guard
+
+   Screenshot: `https://studio.elvn.monster/revenueos/social/2026-08-29/studio-revenueos-desktop.jpg`
+
+4. The first commercial offer is intentionally small: Website Revenue Risk Audit from $750, or Catalog Revenue Leak Audit from $1,500. The scope records authorization and limits; the report does not invent revenue impact. https://studio.elvn.monster/revenueos/audit
+
+   Screenshot: `https://studio.elvn.monster/revenueos/social/2026-08-29/studio-revenueos-audit-desktop.jpg`
+
+5. Production readiness is not “the container started.” For Revenue OS it meant an exact release SHA, fresh verified backup, migration, healthy worker, public identity check, database integrity and a controlled rollback rehearsal.
+
+   Screenshot: `https://studio.elvn.monster/revenueos/social/2026-08-29/studio-revenueos-mobile-390.jpg`
+
+6. Revenue OS is open for one assisted 30-day private-beta monitoring customer: website $299–500 or catalog $699–1,000. The goal is to measure onboarding friction, issue usefulness and fix verification—not add another speculative feature. https://studio.elvn.monster/revenueos
+
+7. Google indexing is not being claimed from a sitemap submission alone. The sitemap and robots contract are public, Revenue OS `lastmod` now reflects the production update, and IndexNow is notified on deployment. Google inclusion still requires Search Console URL Inspection evidence.
+
+### Production screenshot set
+
+- Product: `https://studio.elvn.monster/revenueos/social/2026-08-29/studio-revenueos-desktop.jpg`
+- Audit: `https://studio.elvn.monster/revenueos/social/2026-08-29/studio-revenueos-audit-desktop.jpg`
+- Validation: `https://studio.elvn.monster/revenueos/social/2026-08-29/studio-revenueos-validation-desktop.jpg`
+- Mobile: `https://studio.elvn.monster/revenueos/social/2026-08-29/studio-revenueos-mobile-390.jpg`
+
 Use the public name **ELVN Revenue Operations**. `RevenueOS AI` may appear once as the working product name. Link: `https://studio.elvn.monster/revenueos`.
 
 ## 12 standalone posts
