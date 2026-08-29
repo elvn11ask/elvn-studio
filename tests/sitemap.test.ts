@@ -27,4 +27,15 @@ describe("sitemap", () => {
       expect(new Date(matches[0].lastModified!).toISOString()).toBe("2026-08-05T00:00:00.000Z");
     }
   });
+
+  it("publishes fresh and honest Revenue OS production-update lastmod values", () => {
+    const entries = sitemap();
+    for (const route of ["/revenueos", "/news", "/news/revenueos-private-beta"]) {
+      const entry = entries.find(({ url }) => url === `https://studio.elvn.monster${route}`);
+      expect(entry).toBeDefined();
+      expect(new Date(entry!.lastModified!).toISOString()).toBe("2026-08-29T00:00:00.000Z");
+    }
+    const audit = entries.find(({ url }) => url === "https://studio.elvn.monster/revenueos/audit");
+    expect(new Date(audit!.lastModified!).toISOString()).toBe("2026-08-28T00:00:00.000Z");
+  });
 });

@@ -1,5 +1,48 @@
 # ELVN Revenue Operations — Telegram launch package
 
+## Production update — 29 августа 2026
+
+Черновики. Не публиковать автоматически.
+
+### Русский
+
+Revenue OS 0.2.0 работает в production. Проверены приложение, worker, база данных, backup, идентичность релиза и реальный rollback: новая версия → сохранённая 0.1.0 → новая версия.
+
+Что уже работает: подключение разрешённого сайта, ограниченный read-only scan, инвентарь страниц, сгруппированная очередь проблем, evidence, история изменений, private reports и повторная проверка исправлений.
+
+Инженерный baseline остаётся честно ограниченным: 95 публичных страниц в пяти first-party environments, 0 ошибок запросов, 0 записей и 0 отправок форм. Это не количество клиентов и не доказательство роста трафика, конверсии или выручки.
+
+Коммерческий старт:
+
+- Website Revenue Risk Audit — от $750;
+- Catalog Revenue Leak Audit — от $1,500;
+- 30-дневный assisted private beta — $299–500 для сайта или $699–1,000 для каталога.
+
+Следующая проверка продукта — первый платный клиент, а не ещё одна функция.
+
+Обновление: https://studio.elvn.monster/news/revenueos-private-beta
+
+Скриншот: https://studio.elvn.monster/revenueos/social/2026-08-29/studio-revenueos-desktop.jpg
+
+### English
+
+Revenue OS 0.2.0 is live in production. The application, worker, database, backup, immutable release identity and the new → previous 0.1.0 → new rollback path are verified.
+
+The product now supports authorized-site onboarding, bounded read-only scans, page inventory, grouped issues, evidence, differential history, private reports and fix verification.
+
+The engineering baseline remains deliberately bounded: 95 public pages across five first-party environments, zero request errors, zero writes and zero form submissions. These are not customer, ranking, conversion or revenue outcomes.
+
+Commercial starting point: Website Revenue Risk Audit from $750, Catalog Revenue Leak Audit from $1,500, or one assisted 30-day private-beta monitoring engagement.
+
+Update: https://studio.elvn.monster/news/revenueos-private-beta
+
+Screenshot: https://studio.elvn.monster/revenueos/social/2026-08-29/studio-revenueos-validation-desktop.jpg
+
+### Additional screenshot options
+
+- Audit offer: https://studio.elvn.monster/revenueos/social/2026-08-29/studio-revenueos-audit-desktop.jpg
+- Mobile product page: https://studio.elvn.monster/revenueos/social/2026-08-29/studio-revenueos-mobile-390.jpg
+
 ## Full launch post
 
 ELVN Studio is opening a Private Implementation Program for **ELVN Revenue Operations**—a Revenue Operations Platform for Industrial Distribution.
