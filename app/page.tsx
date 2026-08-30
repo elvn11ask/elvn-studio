@@ -43,6 +43,10 @@ export default function Home() {
       <section className="section shell">
         <div className="section-heading"><div><p className="eyebrow">Selected work</p><h2>Commercial products, handled end to end.</h2></div><p>Each case starts with the business constraint, then shows the technical decisions that made the result reliable.</p></div>
         <div className="project-list"><ProjectCard project={projects[0]} feature />{projects.slice(1, 3).map((project) => <ProjectCard project={project} key={project.slug} />)}</div>
+        <article className="one-pixel-home-card">
+          <div className="one-pixel-home-visual" aria-hidden="true"><span /></div>
+          <div className="one-pixel-home-copy"><p className="eyebrow">Original game · In development</p><h3>ONE PIXEL</h3><p>A cosmic D&amp;D adventure about memory, mercy and a universe that can forget its own history.</p><Link className="text-link" href="/one-pixel">Enter the development signal <span aria-hidden="true">↗</span></Link></div>
+        </article>
         <div className="section-action"><Link className="text-link" href="/work">See all five case studies <span aria-hidden="true">↗</span></Link></div>
       </section>
 

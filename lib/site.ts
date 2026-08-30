@@ -31,6 +31,7 @@ export const staticRoutes = [
   "/contact",
   "/privacy",
   "/search",
+  "/one-pixel",
   "/revenueos",
   "/revenueos/audit",
   "/revenueos/website-guard",
