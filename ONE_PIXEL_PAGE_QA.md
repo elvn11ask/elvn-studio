@@ -1,6 +1,6 @@
 # ONE PIXEL page QA
 
-Local implementation status: **PASS**. Production status remains pending until the main-branch workflow deploys and the live URL is verified.
+Local implementation status: **PASS**. Production deployment and live verification: **PASS**.
 
 ## Required checks
 
@@ -18,11 +18,13 @@ Local implementation status: **PASS**. Production status remains pending until t
 - [x] no console errors — desktop/mobile interaction review returned none
 - [x] existing critical routes remain in production build and link validation
 - [ ] real iPhone Safari — unavailable in this environment
-- [ ] live deployment verified
+- [x] live deployment verified — HTTP/2 200 plus desktop and 390×844 interactive review
 
 ## Deployment status
 
-`NOT DEPLOYED` — ready to push from `feature/one-pixel-development-page` through the existing protected production workflow.
+`DEPLOYED` — merge commit `13cccea2d2fab0fffd78f6e833f895a3eabd3fed` completed Production workflow run `33302773010`, including immutable image build, rollback-aware deploy, public smoke test and IndexNow notification.
+
+Live URL: `https://studio.elvn.monster/one-pixel`
 
 ## Evidence summary
 
@@ -32,3 +34,5 @@ Local implementation status: **PASS**. Production status remains pending until t
 - Images: 3 character and 3 journey images load successfully after entering their lazy-load region
 - Console: no warnings or errors recorded during the final mobile pass
 - Build route: `/one-pixel` reported as static (`○`) by Next.js 16.2.12
+- Live response: HTTP/2 200 with the expected canonical, HSTS and existing security headers
+- Live mobile interaction: 390×844, no horizontal overflow, Witness `aria-pressed=true` and visible history-scar state
