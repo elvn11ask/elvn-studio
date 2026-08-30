@@ -1,3 +1,4 @@
+import { readFileSync } from "node:fs";
 import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";
 import { ProductSchema } from "@/components/revenueos/product-shell";
@@ -98,5 +99,21 @@ describe("Revenue Operations product area", () => {
     expect(body).toContain('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">');
     expect(body).toContain("<loc>https://studio.elvn.monster/revenueos</loc>");
     expect(body).toContain("<lastmod>2026-08-29T00:00:00.000Z</lastmod>");
+  });
+
+  it("publishes framework-independent minimal sitemap diagnostics", () => {
+    const xml = readFileSync("public/sitemap-google-minimal.xml", "utf8");
+    const text = readFileSync("public/sitemap-google-minimal.txt", "utf8");
+
+    expect(xml).toBe([
+      '<?xml version="1.0" encoding="UTF-8"?>',
+      '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+      "  <url>",
+      "    <loc>https://studio.elvn.monster/</loc>",
+      "  </url>",
+      "</urlset>",
+      "",
+    ].join("\n"));
+    expect(text).toBe("https://studio.elvn.monster/\n");
   });
 });
