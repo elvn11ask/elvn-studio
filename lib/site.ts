@@ -14,6 +14,7 @@ export const site = {
 
 export const primaryNavigation = [
   { href: "/revenueos", label: "Revenue Operations" },
+  { href: "/one-pixel", label: "ONE PIXEL" },
   { href: "/work", label: "Work" },
   { href: "/services", label: "Services" },
   { href: "/process", label: "Process" },
