@@ -3,11 +3,17 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Product News",
-  description: "ELVN Studio product engineering updates for industrial revenue operations, commercial evidence, and product data intelligence.",
+  description: "ELVN Studio updates across independent product engineering, industrial revenue operations and ONE PIXEL game development.",
   alternates: { canonical: "/news" },
 };
 
 const articles = [
+  {
+    href: "/one-pixel#devlog",
+    date: "September 1, 2026",
+    title: "ONE PIXEL: Dock Nine rescue pass is playable",
+    summary: "A real Simulator build demonstrates faster grounded party movement, close-up facial animation, human anchors, seven narrative 8-bit arrangements and restrained ambient scene motion.",
+  },
   {
     href: "/news/revenueos-private-beta",
     date: "Updated August 29, 2026",
@@ -29,5 +35,5 @@ const articles = [
 ] as const;
 
 export default function NewsPage() {
-  return <div className="shell graph-news"><p className="eyebrow">ELVN Studio</p><h1>Product news</h1><p className="product-lede">Release notes and field perspectives from our industrial product engineering work.</p><div className="module-catalog">{articles.map((article, index) => <article key={article.href}><span>{String(index + 1).padStart(2, "0")}</span><div><p className="eyebrow">{article.date}</p><h2><Link href={article.href}>{article.title}</Link></h2><p>{article.summary}</p><Link className="text-link" href={article.href}>Read the update <span aria-hidden="true">↗</span></Link></div></article>)}</div></div>;
+  return <div className="shell graph-news"><p className="eyebrow">ELVN Studio</p><h1>Product news</h1><p className="product-lede">Release notes and field perspectives from product engineering and independent game development.</p><div className="module-catalog">{articles.map((article, index) => <article key={article.href}><span>{String(index + 1).padStart(2, "0")}</span><div><p className="eyebrow">{article.date}</p><h2><Link href={article.href}>{article.title}</Link></h2><p>{article.summary}</p><Link className="text-link" href={article.href}>Read the update <span aria-hidden="true">↗</span></Link></div></article>)}</div></div>;
 }
