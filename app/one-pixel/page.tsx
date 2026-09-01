@@ -46,7 +46,7 @@ const milestones = [
 ] as const;
 
 const updates = [
-  { date: "01 SEP 2026", tag: "PLAYABLE BUILD", title: "Dock Nine rescue pass", body: "The opening now centers on a dead man standing at his own funeral. Faster grounded movement, human anchors, Correction, close-up facial animation and seven narrative 8-bit arrangements were rebuilt around first-time clarity.", href: "#dock-nine-live" },
+  { date: "01 SEP 2026", tag: "PLAYABLE BUILD", title: "Dock Nine rescue pass", body: "The opening now centers on a dead man standing at his own funeral. Faster grounded movement, close-up facial animation, seven narrative 8-bit arrangements and restrained ambient ships, lamps, trams and cloth were rebuilt around first-time clarity.", href: "#dock-nine-live" },
   { date: "31 AUG 2026", tag: "CHARACTERS", title: "The cast gets its own motion language", body: "Witness, Mara, Sera and Olan now use distinct concept-derived runtime atlases, authored walk cadence and scene-specific reactions instead of a shared placeholder body.", href: "#characters" },
   { date: "30 AUG 2026", tag: "WORLD", title: "The signal goes public", body: "The first official ONE PIXEL page established the world, Witness mechanic, Sentence, Myr and Vesper without presenting concept art as final gameplay.", href: "#world" },
 ] as const;

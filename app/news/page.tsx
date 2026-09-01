@@ -12,7 +12,7 @@ const articles = [
     href: "/one-pixel#devlog",
     date: "September 1, 2026",
     title: "ONE PIXEL: Dock Nine rescue pass is playable",
-    summary: "A real Simulator build demonstrates the rebuilt first-time story flow, faster grounded party movement, close-up facial animation, human anchors and seven narrative 8-bit arrangements.",
+    summary: "A real Simulator build demonstrates faster grounded party movement, close-up facial animation, human anchors, seven narrative 8-bit arrangements and restrained ambient scene motion.",
   },
   {
     href: "/news/revenueos-private-beta",

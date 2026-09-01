@@ -26,7 +26,7 @@ ALT:
 
 ### Optional first reply
 
-> This pass focused on first-time clarity: Olan’s obituary before his living body, a warm cup that remembers Tavi, human truths instead of collectibles, dedicated facial animation, and seven story-scored 8-bit arrangements instead of a single electronic beep. In development at @elvn11ask.
+> This pass focused on first-time clarity: Olan’s obituary before his living body, a warm cup that remembers Tavi, human truths instead of collectibles, dedicated facial animation, seven story-scored 8-bit arrangements, and restrained ships/trams/lights/cloth that keep both scenes alive. In development at @elvn11ask.
 
 ## Telegram — English
 
