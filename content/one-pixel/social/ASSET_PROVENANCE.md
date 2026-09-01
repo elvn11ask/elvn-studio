@@ -1,5 +1,10 @@
 # ONE PIXEL social asset provenance
 
+## 2026-09-01 Dock Nine rescue
+
+- `one-pixel-x-dock-nine-live.png` and `one-pixel-telegram-dock-nine-live.png` are identical lossless copies of a real iPhone Simulator frame captured from Dock Nine executable 0.2.1 with the deterministic `--qa-dialogue-social` launch state. The scene, animation atlas, UI and dialogue are runtime output; the image was rotated to landscape without content compositing.
+- `tavi-concept.png` and `core-party-target-sheet.png` are internal visual-development sheets copied from the private ONE PIXEL production repository for public project presentation. They are labeled concept/target art and not represented as final gameplay.
+
 The three social images were generated with the built-in OpenAI image generation workflow on 2026-08-30 and then copied into the ELVN Studio repository. They use only owned/generated ONE PIXEL Phase 2A concept sheets as references.
 
 ## X landscape
@@ -36,4 +41,3 @@ References:
 Prompt direction: 4:3 professional project cover; Sentence above the party; square absence in the star field; no text, logo, UI or watermark.
 
 The outputs are new marketing/editorial art and must not be labeled as gameplay screenshots. Use `SOCIAL ART · IN DEVELOPMENT` when a visible status label is needed outside the image.
-

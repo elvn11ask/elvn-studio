@@ -7,7 +7,7 @@ const GRAPH_UPDATED = new Date("2026-08-04T00:00:00.000Z");
 const MANUFACTURER_INTELLIGENCE_UPDATED = new Date("2026-08-05T00:00:00.000Z");
 const REVENUEOS_LAUNCH_UPDATED = new Date("2026-08-28T00:00:00.000Z");
 const REVENUEOS_PRODUCTION_UPDATE = new Date("2026-08-29T00:00:00.000Z");
-const ONE_PIXEL_UPDATED = new Date("2026-08-30T00:00:00.000Z");
+const ONE_PIXEL_UPDATED = new Date("2026-09-01T00:00:00.000Z");
 
 function lastModifiedFor(route: string): Date {
   if (route === "/one-pixel") return ONE_PIXEL_UPDATED;
